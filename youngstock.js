@@ -149,10 +149,11 @@ async function crawlcd(code, displayloc) {
     result = result.replaceAll('마이너스',', -');
     result = result.replaceAll('플러스',', +');
     result = result.replaceAll('퍼센트','%');
-    alert(result);
+
     document.getElementById(displayloc).innerText = `${result}`; // div id에 넣어준다.
     //document.getElementById('console-output').innerText = `${totaltxt}`; 
 }
+
 
 
 
