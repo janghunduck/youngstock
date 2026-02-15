@@ -105,7 +105,6 @@ async function crawlc(code) {
 // <div id=displayloc></div>  
 // 실제 사용 코드
 async function crawlcd(code, displayloc) {
-    alert('1');
     const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; //cors 우회 프록시 서버 URL
     const url= 'https://finance.naver.com/item/main.naver?code=' + code;
     const decodedUrl = decodeURI( url );
@@ -154,6 +153,7 @@ async function crawlcd(code, displayloc) {
     document.getElementById(displayloc).innerText = `${result}`; // div id에 넣어준다.
     //document.getElementById('console-output').innerText = `${totaltxt}`; 
 }
+
 
 
 
