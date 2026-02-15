@@ -42,7 +42,7 @@ async function crawlcd(code, displayloc) {
     //result = result.replaceAll('장마감','');
     result = result.replaceAll('현재가','');
     result = result.replaceAll('전일대비',' ');
-    result = result.replaceAll('하락','<p style="color:blue;">▼</p>');
+    result = result.replaceAll('하락','<p style=color:blue;>▼</p>');
     result = result.replaceAll('상승','▲');
     result = result.replaceAll('보합',', ');
     result = result.replaceAll('마이너스',', -');
@@ -154,6 +154,7 @@ async function crawlc(code) {
     document.getElementById('console_resultc').innerText = `${result}`; 
     //document.getElementById('console-output').innerText = `${totaltxt}`; 
 }
+
 
 
 
