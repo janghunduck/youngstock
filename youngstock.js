@@ -171,8 +171,9 @@ async function crawlhtml(url) {
     const parser = new DOMParser();
     const htmlDOM = parser.parseFromString(htmlString, 'text/html');
 
-    document.getElementById('console_result').innerText = `${htmlDOM}`; 
+    document.getElementById('console_result').innerText = `${htmlString}`; 
 }
+
 
 
 
