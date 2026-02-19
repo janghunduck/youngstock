@@ -171,32 +171,9 @@ async function crawlhtml(url) {
     const parser = new DOMParser();
     const htmlDOM = parser.parseFromString(htmlString, 'text/html');
 
-    const items = htmlDOM.querySelectorAll('.blind');
-    let  itemslen = items.length;
-    var totaltxt = '';
-    var result = '';
-
-    for (let i = 0; i < itemslen; i++) {
-       totaltxt = totaltxt + items[i].textContent;
-       if (items[i].textContent.includes('현재')) {
-             //alert(items[i].textContent);
-             var tagdls = items[i].getElementsByTagName('dd');  // HTMLcollector object  vi getElementsByClassName
-             //alert(tagdls.length);
-             //for (var j = 0; j < tagdls.length; j++) {
-             for (var j = 0; j < 4; j++) {
-                var ticker = tagdls[j].textContent + '   ';  //getElementById
-                ticker = ticker.replace(/\n/g, ' ');
-                if(tagdls[j].textContent .includes('종목')){ } else {
-                    //alert(ticker);
-                    result = result + '\n' + ticker;
-                }
-             }
-         }
-    }
-
-    // here proc
     document.getElementById('console_result').innerText = `${htmlDOM}`; 
 }
+
 
 
 
