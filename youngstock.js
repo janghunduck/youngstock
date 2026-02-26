@@ -188,8 +188,35 @@ async function getBtcPrice() {
 
 
 
+async function getCoinPrice(code, displayloc) {
+        const websocket = new WebSocket('wss://pubwss.bithumb.com/pub/ws');
 
+        websocket.onopen = () => {
+            console.log('WebSocket connected');
+            websocket.send(JSON.stringify({
+                type: 'ticker',
+                symbols: [code],
+                tickTypes: ['1H']
+            }));
+        };
 
+        websocket.onmessage = (event) => {
+            const data = JSON.parse(event.data);
+            if (data.hasOwnProperty('content') && data.content.tickType === '1H') {
+                const btcPrice = data.content.closePrice;
+                document.getElementById(displayloc).textContent = btcPrice.toLocaleString() + ' KRW';
+            }
+        };
+
+        websocket.onclose = () => {
+            console.log('WebSocket disconnected');
+        };
+
+        websocket.onerror = (error) => {
+            console.error('WebSocket error:', error);
+        };
+
+}
 
 
 
