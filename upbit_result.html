@@ -2,7 +2,10 @@
 <body>
 <div id="console_result">&nbsp;</div>
 <script src="https://janghunduck.github.io/youngstock/youngstock.js"></script>
-<script>crawlhtml('https://upbit.com/exchange?code=CRIX.UPBIT.KRW-ETH');</script>
+<script>// 2초마다 가격 갱신
+setInterval(getBtcPrice, 2000);
+getBtcPrice(); // 초기 실행
+</script>
 </body>
   
 </html>
