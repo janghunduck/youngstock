@@ -180,10 +180,12 @@ async function getBtcPrice() {
     .then(data => {
       const price = data[0].trade_price;
       console.log(`현재 비트코인 가격: ${price.toLocaleString()} KRW`);
+        document.getElementById('console_result').innerText = `${price.toLocaleString()} KRW`; 
       // 여기에 화면에 가격을 표시하는 로직 추가
     })
     .catch(error => console.error('에러 발생:', error));
 }
+
 
 
 
