@@ -9,26 +9,6 @@ Source code   :   https://github.com/Rob--W/cors-anywhere/<br>
 Documentation :   https://github.com/Rob--W/cors-anywhere/#documentation<br>
 <br>
 
-
-<script>
-// 현재 페이지의 전체 URL
-const currentUrl = window.location.href;
-alert(currentUrl);
-//** 허용할 페이지의 부분 문자열 (예: admin.html)
-//const allowedPage = "admin.html";
-
-//if (currentUrl.includes(allowedPage)) {
-//    console.log("관리자 페이지입니다. 스크립트를 실행합니다.");
-//    return;
-//    // 여기에 해당 페이지에서만 작동할 코드 작성
-//} else {
-//    alert("허용되지 않은 페이지입니다.");
-//}
-**//  
-
-  
-</script>
-  
 usage 1
 </br>
 <pre><code>  
@@ -52,7 +32,38 @@ usage 3 link
 <a href="https://janghunduck.github.io/youngstock/bithumb_socket.html">bithumb bitbcoin</a>
 </br>
  
-  
+
+usage 4
+</br>
+기본정보
+
+데이터명	금융위원회_주식시세정보 상세설명
+서비스유형	REST	심의여부	
+자동승인
+신청유형	개발계정 | 활용신청	처리상태	승인
+활용기간	2026-02-12 ~ 2028-02-12
+서비스정보
+
+참고문서	오픈API 활용자가이드_금융위원회_주식시세정보.docx
+데이터포맷	JSON+XML
+End Point	https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService
+API 환경 또는 API 호출 조건에 따라 인증키가 적용되는 방식이 다를 수 있습니다.
+포털에서 제공되는 Encoding/Decoding 된 인증키를 적용하면서 구동되는 키를 사용하시기 바랍니다.
+* 향후 포털에서 더 명확한 정보를 제공하기 위해 노력하겠습니다.
+일반 인증키	
+3d8f600d74f8b9377b23b88dbde223d8948ae92f8721b2326c773f125842ab74
+활용신청 상세기능정보
+
+NO	상세기능	설명	일일 트래픽	미리보기
+1	주식시세
+/getStockPriceInfo	KRX에 상장된 주식의 시세 정보를 제공	10000	확인
+2	수익증권시세
+/getSecuritiesPriceInfo	KRX에 상장된 수익증권의 시세 정보를 제공	10000	확인
+3	신주인수권증권시세
+/getPreemptiveRightSecuritiesPriceInfo	KRX에 상장된 신주인수권증권시세 정보를 제공	10000	확인
+4	신주인수권증서시세
+/getPreemptiveRightCertificatePriceInfo	KRX에 상장된 신주인수권증서시세 정보를 제공	10000	확인
+
 <br>
 <br>
 
@@ -61,6 +72,7 @@ usage 3 link
 </body>
 
 </html>
+
 
 
 
