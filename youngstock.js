@@ -56,6 +56,43 @@ async function crawlcd(code, displayloc) {
 
 ﻿
 
+// data.go.kr(금융위원회(fsc)_주식시세정보) api를 얻어오기
+// https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=인증키&numOfRows=1&pageNo=1
+async function getFscData(code, displayloc){
+    const authkey = '3d8f600d74f8b9377b23b88dbde223d8948ae92f8721b2326c773f125842ab74';
+    const params = new URLSearchParams({
+        serviceKey: authkey, // 인증키
+        numOfRows: "1",
+        pageNo: "1",
+        resultType: "json",   // 리턴 xml json
+        beginBasDt: "",       // 기준일자가 검색값보다 크거나 같은 데이터를 검색, 날짜데이터를 계산해야함
+        likeSrtnCd: code,     // 주식코드 003690 (코리안리)
+        isinCd: ""            //  ISN 코드
+        
+    });
+    
+    const url = 'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?' + params.toString();
+    
+    const response = await fetch(url, {
+        headers: {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+            'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7'
+        }
+    });
+
+    const htmlString = await response.text();  // json or xml 파싱 
+    
+    const parser = new DOMParser();
+    const htmlDOM = parser.parseFromString(htmlString, 'text/html');
+
+    const items = htmlDOM.querySelectorAll('.blind');
+    let  itemslen = items.length;
+
+    //document.getElementById(displayloc).innerText = `${result}`; 
+}
+
+
+
 
 async function crawl(url) {
     const proxyUrl = 'https://cors-anywhere.herokuapp.com/';   //cors 우회 프록시 서버 URL
@@ -219,42 +256,6 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
-
-// data.go.kr(금융위원회(fsc)_주식시세정보) api를 얻어오기
-// https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=인증키&numOfRows=1&pageNo=1
-async function getFscData(code, displayloc){
-    const authkey = '3d8f600d74f8b9377b23b88dbde223d8948ae92f8721b2326c773f125842ab74';
-    const params = new URLSearchParams({
-        serviceKey: authkey, // 인증키
-        numOfRows: "1",
-        pageNo: "1",
-        resultType: "json",   // 리턴 xml json
-        beginBasDt: "",       // 기준일자가 검색값보다 크거나 같은 데이터를 검색, 날짜데이터를 계산해야함
-        likeSrtnCd: code,     // 주식코드 003690 (코리안리)
-        isinCd: ""            //  ISN 코드
-        
-    });
-    
-    const url = 'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?' + params.toString();
-    
-    const response = await fetch(url, {
-        headers: {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
-            'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7'
-        }
-    });
-
-    const htmlString = await response.text();  // json or xml 파싱 
-    
-    const parser = new DOMParser();
-    const htmlDOM = parser.parseFromString(htmlString, 'text/html');
-
-    const items = htmlDOM.querySelectorAll('.blind');
-    let  itemslen = items.length;
-
-    //document.getElementById(displayloc).innerText = `${result}`; 
-}
-
 
 
 
