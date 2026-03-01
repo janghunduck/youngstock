@@ -1,0 +1,70 @@
+<html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  
+<body>
+<canvas id="myChart" width="400" height="200"></canvas>
+
+<script>
+const ctx = document.getElementById('myChart').getContext('2d');
+
+const myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green'],
+    datasets: [{
+      label: '투표 수',
+      data: [12, 19, 3, 5],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.5)',
+        'rgba(54, 162, 235, 0.5)',
+        'rgba(255, 206, 86, 0.5)',
+        'rgba(75, 192, 192, 0.5)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)'
+      ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false
+  }
+});
+  
+</script>  
+  
+</br></br>
+반응형 차트 적용 방법
+<div style="width: 100%; max-width: 800px;">
+  <canvas id="responsiveChart"></canvas>
+</div>
+
+<script>
+
+const chart = new Chart(document.getElementById('responsiveChart').getContext('2d'), {
+  type: 'line',
+  data: {
+    labels: ['1월', '2월', '3월', '4월'],
+    datasets: [{
+      label: '매출',
+      data: [300, 450, 400, 600],
+      fill: false,
+      borderColor: 'rgb(75, 192, 192)',
+      tension: 0.1
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false
+  }
+});
+
+  
+</script>
+  
+  
+</body>  
+</html>
