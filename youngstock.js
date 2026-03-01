@@ -61,7 +61,7 @@ async function crawlcd(code, displayloc) {
 async function getFscData(code, displayloc){
     // window.location.href 로 url checking 해서 특정 사이트만 허용해야함.
     // 또는 serviceKey를 보호해야함, 노출안돼게
-    alert('aaaaaaa');
+    alert(code);
     var config = require('./config.json');
     alert(config.fsckey);
     
@@ -262,6 +262,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
