@@ -6,10 +6,9 @@
 <script src="https://janghunduck.github.io/youngstock/youngstock.js?ver=1"></script>
 <div id="console_result">&nbsp;</div>
 <script>
-  //getServiceKey();
   getServiceKey().then(function(key) {
     alert('===>11' + key);
-    // data 는 여기 안에서 처리해야한다.
+    // key 는 여기 안에서 처리해야한다.
     // getFscData(key, '002960', 'console_result');
   }).catch(function(err) {
     alert(err); // Error 출력
