@@ -134,8 +134,8 @@ async function getServiceKey(){
     for (let i = 0; i < itemslen; i++) {
        result = items[i].textContent;
     }
-    return `${result}`;
-    //document.getElementById('console_result').innerText = `${result}`;
+    //return `${result}`;
+    document.getElementById('console_result').innerText = `${result}`;
 }
 
 
@@ -301,6 +301,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
