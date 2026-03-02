@@ -83,7 +83,7 @@ async function getFscData(authkey, code, displayloc){
     });
 
     const htmlString = await response.text();  // json or xml 파싱 
-    
+
     const parser = new DOMParser();
     const htmlDOM = parser.parseFromString(htmlString, 'text/html');
 
@@ -108,6 +108,7 @@ async function getServiceKey(){
 
     const htmlString = await response.text();
     //document.getElementById('console_result').innerText = `${htmlString}`;
+    const parser = new DOMParser();
     alert('0');
     const htmlDOM = parser.parseFromString(htmlString, 'text/html');
     alert('1');
@@ -286,6 +287,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
