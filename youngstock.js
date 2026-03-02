@@ -60,9 +60,9 @@ async function crawlcd(code, displayloc) {
 // https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=인증키&numOfRows=1&pageNo=1
 // 인증키의 경우 앞단(티스토리)에서 넘겨 받아야 함, 티스토리는 마우스 우클릭을 못하게 되어 있으므로 소스를 보지 못한다.
 // 글 쓸때마다 인증키가 들어가야하기 때문에 티스토리에서 숨김페이지를 만들고 키가저장된 js파일을 업로드하고 거기서 키를 가져온다.
-async function getFscData(key, code, displayloc){
+async function getFscData(authkey, code, displayloc){
 
-    const authkey = '3d8f600d74f8b9377b23b88dbde223d8948ae92f8721b2326c773f125842ab74';
+    //const authkey = '3d8f600d74f8b9377b23b88dbde223d8948ae92f8721b2326c773f125842ab74';
     const params = new URLSearchParams({
         serviceKey: authkey, // 인증키
         numOfRows: "1",
@@ -259,6 +259,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
