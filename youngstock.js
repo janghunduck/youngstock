@@ -104,7 +104,44 @@ async function getFscData(authkey, code, displayloc){
     });
     const jsonString = await response.text();  // json or xml 파싱 
     /*
-     {"response":{"header":{"resultCode":"00","resultMsg":"NORMAL SERVICE."},"body":{"numOfRows":1,"pageNo":1,"totalCount":1510,"items":{"item":[{"basDt":"20260226","srtnCd":"002960","isinCd":"KR7002960003","itmsNm":"한국쉘석유","mrktCtg":"KOSPI","clpr":"464000","vs":"-3500","fltRt":"-.75","mkp":"466000","hipr":"469500","lopr":"458000","trqu":"3637","trPrc":"1679360000","lstgStCnt":"1300000","mrktTotAmt":"603200000000"}]}}}}
+    {
+      "response":
+        {
+          "header":
+          {
+            "resultCode":"00",
+            "resultMsg":"NORMAL SERVICE."
+          },
+         "body":
+          {
+           "numOfRows":1,
+           "pageNo":1,
+           "totalCount":1510,
+           "items":
+            {
+              "item":[
+                       {
+                         "basDt":"20260226",
+                         "srtnCd":"002960",
+                         "isinCd":"KR7002960003",
+                         "itmsNm":"한국쉘석유",
+                         "mrktCtg":"KOSPI",
+                         "clpr":"464000",
+                         "vs":"-3500",
+                         "fltRt":"-.75",
+                         "mkp":"466000",
+                         "hipr":"469500",
+                         "lopr":"458000",
+                         "trqu":"3637",
+                         "trPrc":"1679360000",
+                         "lstgStCnt":"1300000",
+                         "mrktTotAmt":"603200000000"
+                       }
+                    ]
+            }
+          }
+       }
+    }
     */
   
     const obj = JSON.parse(jsonString);
@@ -117,6 +154,8 @@ async function getFscData(authkey, code, displayloc){
 
     document.getElementById(displayloc).innerText = `url=>${url} \n json=>${jsonString}`; 
 }
+
+
 
 /*
   1. cors 로 우회 프락시 서버를 활성화 해야한다.
@@ -312,6 +351,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
