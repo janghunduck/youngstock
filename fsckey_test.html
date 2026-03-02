@@ -6,7 +6,7 @@
 <script src="https://janghunduck.github.io/youngstock/youngstock.js?ver=1"></script>
 <div id="console_result">&nbsp;</div>
 <script>
-  getServiceKey().then(function(key) {
+  getServiceKey().then(function(key) { // Promise 동기식 처리가 되는지 ...
     //alert('key='+ key);
     document.getElementById('console_result').innerText = key;
     
