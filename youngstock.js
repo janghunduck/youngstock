@@ -1,4 +1,19 @@
+/**
+https://finance.finup.co.kr/Stock/002960
+https://janghunduck.github.io/youngstock/finup_result.html
 
+<div class="box_info mt15">
+<div id="divCurrentPrice" class="box_value cm_tit_35 up">
+<span id="spCurrentPrice" class="cm_color_bk">508,000</span>
+<span class="cm_subtit">
+<i class="im im-care-up"></i>
+<span id="smPriceChange">
+44,000 &#x2B;9.48<i class="p_mark">%</i>
+</span>
+</span>
+</div>
+
+**/
 
 
 // <div id=displayloc></div>  
@@ -285,6 +300,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
