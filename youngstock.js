@@ -87,7 +87,7 @@ async function getFscData(authkey, code, displayloc){
     //}).catch(function(err) {
     //   alert(err); // Error 출력
     //});
-
+    alert(authkey);
     const params = new URLSearchParams({
         serviceKey: authkey, // 인증키
         numOfRows: "1",
@@ -313,6 +313,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
