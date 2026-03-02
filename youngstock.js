@@ -73,39 +73,7 @@ async function crawlcd(code, displayloc) {
     document.getElementById(displayloc).innerText = `${result}`; 
 }
 
-﻿
-/* ------------------------------------------------------------------------------------------------------------
- data.go.kr(금융위원회(fsc)_주식시세정보) api를 얻어오기
- https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=인증키&numOfRows=1&pageNo=1
- 인증키의 경우 앞단(티스토리)에서 넘겨 받아야 함, 티스토리는 마우스 우클릭을 못하게 되어 있으므로 소스를 보지 못한다.
---------------------------------------------------------------------------------------------------------------- */
-async function getFscData(authkey, code, displayloc){
-
-    const params = new URLSearchParams({
-        serviceKey: authkey, // 인증키
-        numOfRows: "1",
-        pageNo: "1",
-        resultType: "xml",   // 리턴 xml json
-        beginBasDt: "",       // 기준일자가 검색값보다 크거나 같은 데이터를 검색, 날짜데이터를 계산해야함
-        likeSrtnCd: code,     // 주식코드 003690 (코리안리)
-        isinCd: ""            //  ISN 코드
-    });
-    let key = params.get('serviceKey');
-    if (key) {
-      params.set('serviceKey', key.replace(/\n/g,''));  // \n을 제거하고 다시 설정
-    }
-    const url = 'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?' + params.toString();
-    const resultType = params.get('resultType');
-  
-    const response = await fetch(url, {
-        headers: {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
-            'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7'
-        }
-    });
-    const resultString = await response.text();  // json or xml 파싱 
-
-    /* ------------------------------------------------------------------------
+/* ------------------------------------------------------------------------
     {
       "response":
         {
@@ -144,7 +112,72 @@ async function getFscData(authkey, code, displayloc){
           }
        }
     }
-    ---------------------------------------------------------------------- */
+----------------------------------------------------------------------
+    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <response>
+    <header>
+    <resultCode>00</resultCode>
+    <resultMsg>NORMAL SERVICE.</resultMsg>
+    </header>
+    <body>
+    <numOfRows>1</numOfRows>
+    <pageNo>1</pageNo>
+    <totalCount>1510</totalCount>
+    <items>
+    <item>
+    <basDt>20260226</basDt>
+    <srtnCd>002960</srtnCd>
+    <isinCd>KR7002960003</isinCd>
+    <itmsNm>한국쉘석유</itmsNm>
+    <mrktCtg>KOSPI</mrktCtg>
+    <clpr>464000</clpr>
+    <vs>-3500</vs>
+    <fltRt>-.75</fltRt>
+    <mkp>466000</mkp>
+    <hipr>469500</hipr>
+    <lopr>458000</lopr>
+    <trqu>3637</trqu>
+    <trPrc>1679360000</trPrc>
+    <lstgStCnt>1300000</lstgStCnt>
+    <mrktTotAmt>603200000000</mrktTotAmt>
+    </item>
+    </items>
+    </body>
+    </response>
+---------------------------------------------------------------------- */
+
+/* ------------------------------------------------------------------------------------------------------------
+ data.go.kr(금융위원회(fsc)_주식시세정보) api를 얻어오기
+ https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=인증키&numOfRows=1&pageNo=1
+ 인증키의 경우 앞단(티스토리)에서 넘겨 받아야 함, 티스토리는 마우스 우클릭을 못하게 되어 있으므로 소스를 보지 못한다.
+--------------------------------------------------------------------------------------------------------------- */
+async function getFscData(authkey, code, displayloc){
+
+    const params = new URLSearchParams({
+        serviceKey: authkey, // 인증키
+        numOfRows: "1",
+        pageNo: "1",
+        resultType: "xml",   // 리턴 xml json
+        beginBasDt: "",       // 기준일자가 검색값보다 크거나 같은 데이터를 검색, 날짜데이터를 계산해야함
+        likeSrtnCd: code,     // 주식코드 003690 (코리안리)
+        isinCd: ""            //  ISN 코드
+    });
+    let key = params.get('serviceKey');
+    if (key) {
+      params.set('serviceKey', key.replace(/\n/g,''));  // \n을 제거하고 다시 설정
+    }
+    const url = 'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?' + params.toString();
+    const resultType = params.get('resultType');
+  
+    const response = await fetch(url, {
+        headers: {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+            'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7'
+        }
+    });
+    const resultString = await response.text();  // json or xml 파싱 
+
+
     if (resultType === 'json'){
       const obj = JSON.parse(resultString);
     } else if (resultType === 'xml'){
@@ -356,6 +389,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
