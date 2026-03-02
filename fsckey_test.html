@@ -11,7 +11,11 @@
     document.getElementById('console_result').innerText = key;
     
     // key 는 여기 안에서 처리해야한다.
-    // getFscData(key, '002960', 'console_result');
+    if((key !== '') || (key !== undefined)) {
+       getFscData(key, '002960', 'console_result');
+    } else {
+       document.getElementById('console_result').innerText = 'serviceKey is 0';
+    }
   }).catch(function(err) {
     alert(err);
   });
