@@ -5,7 +5,12 @@
 <body>
 <script src="https://janghunduck.github.io/youngstock/youngstock.js?ver=1"></script>
 <div id="console_result">&nbsp;</div>
-<script>getServiceKey();</script>
+<script>
+  
+  var key = getServiceKey();
+  document.getElementById('console_result').innerText = `${key}`;
+
+</script>
 </body>
   
 </html>
