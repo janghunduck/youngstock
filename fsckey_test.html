@@ -6,12 +6,12 @@
 <script src="https://janghunduck.github.io/youngstock/youngstock.js?ver=1"></script>
 <div id="console_result">&nbsp;</div>
 <script>
-  getServiceKey();
-  //getServiceKey().then(function(data) {
-  //  document.getElementById('console_result').innerText = `${data}';
-  //}).catch(function(err) {
-  //  alert(err); // Error 출력
-  //});
+  //getServiceKey();
+  getServiceKey().then(function(data) {
+    alert('===>' + data);
+  }).catch(function(err) {
+    alert(err); // Error 출력
+  });
 
 
 </script>
