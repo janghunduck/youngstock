@@ -80,8 +80,7 @@ async function crawlcd(code, displayloc) {
  인증키의 경우 앞단(티스토리)에서 넘겨 받아야 함, 티스토리는 마우스 우클릭을 못하게 되어 있으므로 소스를 보지 못한다.
 */
 async function getFscData(authkey, code, displayloc){
-    
-    alert(authkey);
+
     const params = new URLSearchParams({
         serviceKey: authkey, // 인증키
         numOfRows: "1",
@@ -90,8 +89,12 @@ async function getFscData(authkey, code, displayloc){
         beginBasDt: "",       // 기준일자가 검색값보다 크거나 같은 데이터를 검색, 날짜데이터를 계산해야함
         likeSrtnCd: code,     // 주식코드 003690 (코리안리)
         isinCd: ""            //  ISN 코드
-        
     });
+    let key = params.get('serviceKey');
+    if (key) {
+      params.set('serviceKey', key.replace(/\n/g''));  // \n을 제거하고 다시 설정
+    }
+  
     const url = 'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?' + params.toString();
     alert(url);
   
@@ -307,6 +310,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
