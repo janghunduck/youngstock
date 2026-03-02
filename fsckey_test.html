@@ -3,19 +3,21 @@
 <body>
 <script src="https://janghunduck.github.io/youngstock/youngstock.js?ver=1"></script>
 <div id="console_result">&nbsp;</div>
+</br>
+<div id="console_resulta">&nbsp;</div>
 <script>
   getServiceKey().then(function(key) { // Promise 동기식 처리가 되는지 ...
     //alert('key='+ key);
-    //document.getElementById('console_result').innerText = key;
+    document.getElementById('console_result').innerText = key;
     
     // key 는 여기 안에서 처리해야한다.
     if((key !== '') || (key !== undefined)) {
-       getFscData(key, '002960', 'console_result');
+       getFscData(key, '002960', 'console_resulta');
     } else {
-       document.getElementById('console_result').innerText = 'serviceKey is 0';
+       document.getElementById('console_resulta').innerText = 'serviceKey is 0';
     }
   }).catch(function(err) {
-    document.getElementById('console_result').innerText = err;
+    document.getElementById('console_resulta').innerText = err;
   });
 
 
