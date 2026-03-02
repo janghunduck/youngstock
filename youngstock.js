@@ -2,7 +2,7 @@
 
 
 // <div id=displayloc></div>  
-// 실제 사용 코드
+// 실제 사용 코드 naver 
 async function crawlcd(code, displayloc) {
     const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; //cors 우회 프록시 서버 URL
     const url= 'https://finance.naver.com/item/main.naver?code=' + code;
@@ -13,8 +13,11 @@ async function crawlcd(code, displayloc) {
             'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7'
         }
     });
-
+    
     const htmlString = await response.text();
+
+    // htmlString 이 nul 이거나 '' 이면 finup.co.kr에 접속해 가져온다. 우회경로 사용.
+    
     const parser = new DOMParser();
     const htmlDOM = parser.parseFromString(htmlString, 'text/html');
 
@@ -49,6 +52,7 @@ async function crawlcd(code, displayloc) {
     result = result.replaceAll('마이너스',', -');
     result = result.replaceAll('플러스',', +');
     result = result.replaceAll('퍼센트','%');
+    
 
     document.getElementById(displayloc).innerText = `${result}`; // div id에 넣어준다.
     //document.getElementById('console-output').innerText = `${totaltxt}`; 
@@ -281,6 +285,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
