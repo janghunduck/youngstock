@@ -94,10 +94,8 @@ async function getFscData(authkey, code, displayloc){
     if (key) {
       params.set('serviceKey', key.replace(/\n/g,''));  // \n을 제거하고 다시 설정
     }
-  
     const url = 'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?' + params.toString();
-    alert(url);
-  
+
     const response = await fetch(url, {
         headers: {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
@@ -105,13 +103,12 @@ async function getFscData(authkey, code, displayloc){
         }
     });
     const htmlString = await response.text();  // json or xml 파싱 
-    alert(htmlString);
   
-    const parser = new DOMParser();
-    const htmlDOM = parser.parseFromString(htmlString, 'text/html');
+    //const parser = new DOMParser();
+    //const htmlDOM = parser.parseFromString(htmlString, 'text/html');
 
-    const items = htmlDOM.querySelectorAll('.blind');
-    let  itemslen = items.length;
+    //const items = htmlDOM.querySelectorAll('.blind');
+    //let  itemslen = items.length;
 
     //document.getElementById(displayloc).innerText = `${result}`; 
 }
@@ -310,6 +307,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
