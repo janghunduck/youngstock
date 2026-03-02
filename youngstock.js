@@ -159,7 +159,7 @@ async function getFscData(authkey, code, displayloc){
         serviceKey: authkey, // 인증키
         numOfRows: "1",
         pageNo: "1",
-        resultType: "xml",   // 리턴 xml json
+        resultType: "json",   // 리턴 xml json
         beginBasDt: "",       // 기준일자가 검색값보다 크거나 같은 데이터를 검색, 날짜데이터를 계산해야함
         likeSrtnCd: code,     // 주식코드 003690 (코리안리)
         isinCd: ""            //  ISN 코드
@@ -183,6 +183,7 @@ async function getFscData(authkey, code, displayloc){
 
     if (resultType === 'json'){
       const obj = JSON.parse(resultString);
+      
     } else if (resultType === 'xml'){
       
     }
@@ -392,6 +393,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
