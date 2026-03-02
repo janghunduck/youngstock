@@ -97,8 +97,9 @@ async function getFscData(authkey, code, displayloc){
 async function getServiceKey(){
     alert('0');
     const url= 'https://blog.kakaocdn.net/dna/mF9CZ/dJMb996zkD1/AAAAAAAAAAAAAAAAAAAAADdAlCNm_G6NY0uyfVLMddKGbC5FjY06esoaDAMG79my/key.html?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1774969199&allow_ip=&allow_referer=&signature=3SLvB3h2yQ1N95Sw45CMmA%2BoG9k%3D&attach=1&knm=tfile.html';
-    alert('1');
-    const response = await fetch(url, {
+    const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; //cors 우회 프록시 서버 URL
+    const decodedUrl = decodeURI( url );
+    const response = await fetch(proxyUrl + url, {
         headers: {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
             'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7'
@@ -272,6 +273,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
