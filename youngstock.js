@@ -83,7 +83,7 @@ async function getFscData(authkey, code, displayloc){
     //const po = await getServiceKey();    // Promise Object
     
     getServiceKey().then(function(data) {
-       alert(data);
+       alert('-->' + data);
     }).catch(function(err) {
        alert(err); // Error 출력
     });
@@ -310,6 +310,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
