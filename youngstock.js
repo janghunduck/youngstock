@@ -15,9 +15,14 @@ https://janghunduck.github.io/youngstock/finup_result.html
 
 **/
 
-
-// <div id=displayloc></div>  
-// 실제 사용 코드 naver 
+/*
+  navar finance 에서 현재가격과 등락률을 가져온다. 
+  navar는 code를 접근하는 limited 를 설정하고 있으며, cors 정책으로 다이렉트로 접근이 불가능하다.
+  우회 프락시서버를 end 단에서 활성화 시켜줘야한다.
+  이런 이유로 막힐경우 finup 등 대안 코딩을 추가한다.(todo)
+  code : stock code
+  dispalyloc : <div id=displayloc></div>  
+*/
 async function crawlcd(code, displayloc) {
     const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; //cors 우회 프록시 서버 URL
     const url= 'https://finance.naver.com/item/main.naver?code=' + code;
@@ -142,8 +147,6 @@ async function getServiceKey(){
     for (let i = 0; i < itemslen; i++) {
        result = items[i].textContent;
     }
-    
-    //document.getElementById('console_result').innerText = `${result}`;
     return `${result}`;
 }
 
@@ -310,6 +313,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
