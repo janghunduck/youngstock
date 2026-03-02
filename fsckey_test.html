@@ -8,13 +8,13 @@
 <script>
 
   getServiceKey().then(function(data) {
-    document.getElementById('console_result').innerText = `${data}`;
-    let key = `${data}`;
+    document.getElementById('console_result').innerText = '${data}';
+    //let key = `${data}`;
   }).catch(function(err) {
     alert(err); // Error 출력
   });
 
-  alert(key);
+  //alert(key);
 </script>
 
 </br>
