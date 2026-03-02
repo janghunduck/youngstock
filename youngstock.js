@@ -111,9 +111,9 @@ async function getServiceKey(){
     const htmlDOM = parser.parseFromString(htmlString, 'text/html');
 
     const items = htmlDOM.querySelectorAll('tbody');
-    let  i = items.length;
-    for (let i = 0; i < liElementsLength; i++) {
-       alert(liElements[i].textContent);
+    let  itemslen = items.length;
+    for (let i = 0; i < itemslen; i++) {
+       alert(items[i].textContent);
     }
     
 }
@@ -281,6 +281,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
