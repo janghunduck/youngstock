@@ -76,78 +76,6 @@ async function crawlcd(code, displayloc) {
     document.getElementById(displayloc).innerText = `${result}`; 
 }
 
-/* ------------------------------------------------------------------------
-    {
-      "response":
-        {
-          "header":
-          {
-            "resultCode":"00",
-            "resultMsg":"NORMAL SERVICE."
-          },
-         "body":
-          {
-           "numOfRows":1,
-           "pageNo":1,
-           "totalCount":1510,
-           "items":
-            {
-              "item":[
-                       {
-                         "basDt":"20260226",
-                         "srtnCd":"002960",
-                         "isinCd":"KR7002960003",
-                         "itmsNm":"한국쉘석유",
-                         "mrktCtg":"KOSPI",
-                         "clpr":"464000",
-                         "vs":"-3500",
-                         "fltRt":"-.75",
-                         "mkp":"466000",
-                         "hipr":"469500",
-                         "lopr":"458000",
-                         "trqu":"3637",
-                         "trPrc":"1679360000",
-                         "lstgStCnt":"1300000",
-                         "mrktTotAmt":"603200000000"
-                       }
-                    ]
-            }
-          }
-       }
-    }
-----------------------------------------------------------------------
-    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-    <response>
-    <header>
-    <resultCode>00</resultCode>
-    <resultMsg>NORMAL SERVICE.</resultMsg>
-    </header>
-    <body>
-    <numOfRows>1</numOfRows>
-    <pageNo>1</pageNo>
-    <totalCount>1510</totalCount>
-    <items>
-    <item>
-    <basDt>20260226</basDt>
-    <srtnCd>002960</srtnCd>
-    <isinCd>KR7002960003</isinCd>
-    <itmsNm>한국쉘석유</itmsNm>
-    <mrktCtg>KOSPI</mrktCtg>
-    <clpr>464000</clpr>
-    <vs>-3500</vs>
-    <fltRt>-.75</fltRt>
-    <mkp>466000</mkp>
-    <hipr>469500</hipr>
-    <lopr>458000</lopr>
-    <trqu>3637</trqu>
-    <trPrc>1679360000</trPrc>
-    <lstgStCnt>1300000</lstgStCnt>
-    <mrktTotAmt>603200000000</mrktTotAmt>
-    </item>
-    </items>
-    </body>
-    </response>
----------------------------------------------------------------------- */
 
 /* ------------------------------------------------------------------------------------------------------------
  data.go.kr(금융위원회(fsc)_주식시세정보) api를 얻어오기
@@ -397,6 +325,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
