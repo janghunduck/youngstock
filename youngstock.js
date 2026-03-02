@@ -169,7 +169,6 @@ async function getFscData(authkey, code, displayloc){
     });
     let key = params.get('serviceKey');
     let resultType = params.get('resultType');
-    alert('--->' + resultType);
     if (key) {
       params.set('serviceKey', key.replace(/\n/g,''));  // \n을 제거하고 다시 설정
     }
@@ -186,10 +185,10 @@ async function getFscData(authkey, code, displayloc){
     const resultString = await response.text();  // json or xml 파싱 
 
 
-    if (resultType === 'json'){
+    if (resultType == 'json'){
       const obj = JSON.parse(resultString);
       
-    } else if (resultType === 'xml'){
+    } else if (resultType == 'xml'){
       
     }
     
@@ -398,6 +397,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
