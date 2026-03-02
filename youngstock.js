@@ -62,7 +62,6 @@ async function crawlcd(code, displayloc) {
 // 글 쓸때마다 인증키가 들어가야하기 때문에 티스토리에서 숨김페이지를 만들고 키가저장된 js파일을 업로드하고 거기서 키를 가져온다.
 async function getFscData(authkey, code, displayloc){
 
-    //const authkey = '3d8f600d74f8b9377b23b88dbde223d8948ae92f8721b2326c773f125842ab74';
     const params = new URLSearchParams({
         serviceKey: authkey, // 인증키
         numOfRows: "1",
@@ -259,6 +258,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
