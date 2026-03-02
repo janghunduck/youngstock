@@ -62,8 +62,8 @@ async function getFscData(code, displayloc){
     // window.location.href 로 url checking 해서 특정 사이트만 허용해야함.
     // 또는 serviceKey를 보호해야함, 노출안돼게
     alert(code);
-    var config = require('./config.json');
-    alert(config.fsckey);
+    //var config = require('./config.json');
+    //alert(config.fsckey);
     
     const authkey = '3d8f600d74f8b9377b23b88dbde223d8948ae92f8721b2326c773f125842ab74';
     const params = new URLSearchParams({
@@ -262,6 +262,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
