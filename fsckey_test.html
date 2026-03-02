@@ -7,8 +7,10 @@
 <div id="console_result">&nbsp;</div>
 <script>
   //getServiceKey();
-  getServiceKey().then(function(data) {
-    alert('===>' + data);
+  getServiceKey().then(function(key) {
+    alert('===>' + key);
+    // data 는 여기 안에서 처리해야한다.
+    // getFscData(key, '002960', 'console_result');
   }).catch(function(err) {
     alert(err); // Error 출력
   });
