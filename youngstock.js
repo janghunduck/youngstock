@@ -102,16 +102,24 @@ async function getFscData(authkey, code, displayloc){
     }
     //const url = 'https://apis.data.go.kr/1160100/service/GetStockInfoService/getStockPriceInfo?' + params.toString();
     const url = 'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?' + params.toString();
-    alert(url);
-  
-    const response = await fetch(url, {
-        headers: {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
-            'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7'
-        }
-    });
-    const resultString = await response.text();  // json or xml 파싱 
-    alert(resultString);
+
+    try {
+      const response = await fetch(url, {
+          headers: {
+              'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+              'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7'
+          }
+      });
+
+      if (!response.ok) {
+        document.getElementById(displayloc).innerText = `${url}`; 
+        throw new Error(`HTTP error! status: ${response.status}`);  // If not ok (e.g., 404, 500), throw an error to be caught by the catch block
+      }
+      const resultString = await response.text();  // html형태로 받음, response.json();으로도 가능
+      alert(resultString);
+    } catch(err) {
+      alert("Could not fetch data:" + error.message);
+    }
 
     if (resultType == 'json'){
       const obj = JSON.parse(resultString);
@@ -325,6 +333,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
