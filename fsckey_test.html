@@ -14,6 +14,8 @@
     if((key !== '') || (key !== undefined)) {
        getFscData(key, '002960', 'console_resulta');
     } else {
+       alert('not key');
+       getFscData('3d8f600d74f8b9377b23b88dbde223d8948ae92f8721b2326c773f125842ab74', '002960', 'console_resulta');
        document.getElementById('console_resulta').innerText = 'serviceKey is 0';
     }
   }).catch(function(err) {
