@@ -115,7 +115,6 @@ async function getFscData(authkey, code, displayloc){
         throw new Error(`HTTP error! status: ${response.status}`);  // If not ok (e.g., 404, 500), throw an error to be caught by the catch block
       }
       const resultString = await response.text();  // html형태로 받음, response.json();으로도 가능
-      alert(resultString);
     } catch(err) {
       alert("Could not fetch data:" + error.message);
     }
@@ -332,6 +331,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
