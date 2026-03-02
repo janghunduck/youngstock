@@ -78,6 +78,67 @@ async function crawlcd(code, displayloc) {
     }
 }
 
+function _gethostname(urlString){
+  const url = new URL(urlString);
+  return url.hostname; // "www.example.com" (도메인만)  
+}
+
+/* ----------------------------------------------------------------------------------------------
+crawlcd 에서 응답이 없는 경우 crawlcd 함수 안에서 호출된다.
+crawlcd 함수와 동일하나 urlSting를 인자로 받는다.
+이 함수는 재귀함수로 다시 응답이 없으면 다른 url로 재 호출하고 url의 hostname를 구분자로 파싱을 수행한다. 
+------------------------------------------------------------------------------------------------ */
+async function crawlOther(code, displayloc, urlString) {
+    const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; //cors 우회 프록시 서버 URL
+    const url= urlString + code;
+    const decodedUrl = decodeURI( url );
+    const response = await fetch(proxyUrl + url, {
+        headers: {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+            'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7'
+        }
+    });
+    if (!response.ok) {
+        // 여기서 부터는 재귀를 사용하고, 파싱에서 뽑을 때는 url를 체크(도메인)해서 처리한다.
+        // crawlOther(code, displayloc, url);
+        // finup.co.kr에 접속해 가져온다. 우회경로 사용.
+        // throw new Error(`HTTP error! status: ${response.status}`);  // If not ok (e.g., 404, 500), throw an error to be caught by the catch block
+    } else {
+        const htmlString = await response.text();
+        const parser = new DOMParser();
+        const htmlDOM = parser.parseFromString(htmlString, 'text/html');
+        const items = htmlDOM.querySelectorAll('.blind');
+        let  itemslen = items.length;
+        var totaltxt = '';
+        var result = '';
+
+        for (let i = 0; i < itemslen; i++) {
+           totaltxt = totaltxt + items[i].textContent;
+           if (items[i].textContent.includes('현재')) {
+               var tagdls = items[i].getElementsByTagName('dd');  // HTMLcollector object  vi getElementsByClassName
+
+               for (var j = 0; j < 4; j++) {
+                  var ticker = tagdls[j].textContent + '   ';  //getElementById
+                  ticker = ticker.replace(/\n/g, ' ');
+                  if(tagdls[j].textContent .includes('종목')){ } else {
+                      result = result + '\n' + ticker;
+                  }
+               }
+           }
+        }
+
+        result = result.replaceAll('현재가','');
+        result = result.replaceAll('전일대비',' ');
+        result = result.replaceAll('하락','▼');
+        result = result.replaceAll('상승','▲');
+        result = result.replaceAll('보합',', ');
+        result = result.replaceAll('마이너스',', -');
+        result = result.replaceAll('플러스',', +');
+        result = result.replaceAll('퍼센트','%');
+    
+        document.getElementById(displayloc).innerText = `${result}`; 
+    }
+}
 
 /* ------------------------------------------------------------------------------------------------------------
  data.go.kr(금융위원회(fsc)_주식시세정보) api를 얻어오기
@@ -333,6 +394,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
