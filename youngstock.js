@@ -15,14 +15,14 @@ https://janghunduck.github.io/youngstock/finup_result.html
 
 **/
 
-/*
+/* ----------------------------------------------------------------------------------------------
   navar finance 에서 현재가격과 등락률을 가져온다. 
   navar는 code를 접근하는 limited 를 설정하고 있으며, cors 정책으로 다이렉트로 접근이 불가능하다.
   우회 프락시서버를 end 단에서 활성화 시켜줘야한다.
   이런 이유로 막힐경우 finup 등 대안 코딩을 추가한다.(todo)
   code : stock code
   dispalyloc : <div id=displayloc></div>  
-*/
+------------------------------------------------------------------------------------------------ */
 async function crawlcd(code, displayloc) {
     const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; //cors 우회 프록시 서버 URL
     const url= 'https://finance.naver.com/item/main.naver?code=' + code;
@@ -74,11 +74,11 @@ async function crawlcd(code, displayloc) {
 }
 
 ﻿
-/*
+/* ------------------------------------------------------------------------------------------------------------
  data.go.kr(금융위원회(fsc)_주식시세정보) api를 얻어오기
  https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=인증키&numOfRows=1&pageNo=1
  인증키의 경우 앞단(티스토리)에서 넘겨 받아야 함, 티스토리는 마우스 우클릭을 못하게 되어 있으므로 소스를 보지 못한다.
-*/
+--------------------------------------------------------------------------------------------------------------- */
 async function getFscData(authkey, code, displayloc){
 
     const params = new URLSearchParams({
@@ -103,7 +103,7 @@ async function getFscData(authkey, code, displayloc){
         }
     });
     const jsonString = await response.text();  // json or xml 파싱 
-    /*
+    /* ------------------------------------------------------------------------
     {
       "response":
         {
@@ -142,7 +142,7 @@ async function getFscData(authkey, code, displayloc){
           }
        }
     }
-    */
+    ---------------------------------------------------------------------- */
   
     const obj = JSON.parse(jsonString);
     
@@ -157,13 +157,13 @@ async function getFscData(authkey, code, displayloc){
 
 
 
-/*
+/* ------------------------------------------------------------------------------------
   1. cors 로 우회 프락시 서버를 활성화 해야한다.
   2. 공공데이터포탈의 할당된 serviceKey에 대해서 특정 사이트에 저장하고 가져온다.
      부득이하게 하드코딩을 피하기위해 외부에서 가져오는 방식을 취한다.
   3. 외에 2차 보안은 serviceKey 를 자주 바꾸는 것으로 ...
   4. todo: 암호화 처리를 추가하는 걸로 ... 
-*/
+--------------------------------------------------------------------------------------- */
 async function getServiceKey(){
 
     const url= 'https://youngsto.tistory.com/58';
@@ -351,6 +351,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
