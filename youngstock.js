@@ -109,19 +109,14 @@ async function getServiceKey(){
     const htmlString = await response.text();
     //document.getElementById('console_result').innerText = `${htmlString}`;
     const parser = new DOMParser();
-    alert('0');
     const htmlDOM = parser.parseFromString(htmlString, 'text/html');
-    alert('1');
     const items = htmlDOM.querySelectorAll('tbody');
-    alert('2');
-    //const onecell = htmlDom.querySelectorAll('table:first-child td');
-    //alert(onecell);
-    let  itemslen = items.length;
-    alert(itemslen);
+    let itemslen = items.length;
+    let result;
     for (let i = 0; i < itemslen; i++) {
-       alert(items[i].textContent);
+       result = items[i].textContent);
     }
-    
+    return result;
 }
 
 
@@ -287,6 +282,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
