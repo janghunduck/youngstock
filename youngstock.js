@@ -31,12 +31,13 @@ async function crawlcd(code, displayloc) {
     const url= 'https://finance.naver.com/item/main.naver?code=' + code;
     const decodedUrl = decodeURI( url );
     const response = await fetch(proxyUrl + url, {
+        // method: 'POST',
         headers: {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
             'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7'
         }
     });
-    if (!response.ok) {
+    if (!response.ok) {   // 200~299이면 true, response.status http응답코드, response.headers 
         // 여기서 부터는 재귀를 사용하고, 파싱에서 뽑을 때는 url를 체크(도메인)해서 처리한다.
         // crawlOther(code, displayloc, url);
         // finup.co.kr에 접속해 가져온다. 우회경로 사용.
@@ -394,6 +395,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
