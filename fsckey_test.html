@@ -7,12 +7,12 @@
 <div id="console_result">&nbsp;</div>
 <script>
   getServiceKey().then(function(data) {
-    document.getElementById('console_result').innerText = data;
+    document.getElementById('console_result').innerText = `${data}';
   }).catch(function(err) {
     alert(err); // Error 출력
   });
 
-  alert(document.getElementById('console_result').value);
+
 </script>
 
 </br>
