@@ -107,12 +107,13 @@ async function getServiceKey(){
     });
 
     const htmlString = await response.text();
-    document.getElementById('console_result').innerText = `${htmlString}`;
+    //document.getElementById('console_result').innerText = `${htmlString}`;
     const htmlDOM = parser.parseFromString(htmlString, 'text/html');
-
-    const items = htmlDOM.querySelectorAll('table');
-    const onecell = htmlDom.querySelectorAll('table:first-child td');
-    alert(onecell);
+    alert('1');
+    const items = htmlDOM.querySelectorAll('tbody');
+    alert('2');
+    //const onecell = htmlDom.querySelectorAll('table:first-child td');
+    //alert(onecell);
     let  itemslen = items.length;
     alert(itemslen);
     for (let i = 0; i < itemslen; i++) {
@@ -284,6 +285,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
