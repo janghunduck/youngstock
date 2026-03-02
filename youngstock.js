@@ -85,7 +85,7 @@ async function crawlcd(code, displayloc) {
  todo: url 자체도 숨기기위해 앞단에서 받아온다. cors 정책으로 js안에서 접속이 않될 수 있다.
 --------------------------------------------------------------------------------------------------------------- */
 async function getFscData(authkey, code, displayloc){
-
+    
     const params = new URLSearchParams({
         serviceKey: authkey, // 인증키
         numOfRows: "1",
@@ -102,7 +102,7 @@ async function getFscData(authkey, code, displayloc){
     }
     const url = 'https://apis.data.go.kr/1160100/service/GetStockInfoService/getStockPriceInfo?' + params.toString();
     //const url = 'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?' + params.toString();
-    
+    alert(url);
   
     const response = await fetch(url, {
         headers: {
@@ -325,6 +325,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
