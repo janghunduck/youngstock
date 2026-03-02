@@ -96,7 +96,7 @@ async function getFscData(authkey, code, displayloc){
 
 async function getServiceKey(){
     alert('0');
-    const url= 'https://blog.kakaocdn.net/dna/B8LTS/dJMcai3rLsg/AAAAAAAAAAAAAAAAAAAAAOLVmrn1Dl5_fV9yZ1N48fXQRUCeCOAJwjj3kdqVeUTX/fsc.key?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1774969199&allow_ip=&allow_referer=&signature=N8geB9ZrqVKaBbobGlFiRkpS8vU%3D&attach=1&knm=tfile.key';
+    const url= 'https://blog.kakaocdn.net/dna/mF9CZ/dJMb996zkD1/AAAAAAAAAAAAAAAAAAAAADdAlCNm_G6NY0uyfVLMddKGbC5FjY06esoaDAMG79my/key.html?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1774969199&allow_ip=&allow_referer=&signature=3SLvB3h2yQ1N95Sw45CMmA%2BoG9k%3D&attach=1&knm=tfile.html';
     alert('1');
     const response = await fetch(url, {
         headers: {
@@ -272,6 +272,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
