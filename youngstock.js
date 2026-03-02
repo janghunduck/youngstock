@@ -44,21 +44,18 @@ async function crawlcd(code, displayloc) {
     for (let i = 0; i < itemslen; i++) {
        totaltxt = totaltxt + items[i].textContent;
        if (items[i].textContent.includes('현재')) {
-             //alert(items[i].textContent);
              var tagdls = items[i].getElementsByTagName('dd');  // HTMLcollector object  vi getElementsByClassName
-             //alert(tagdls.length);
-             //for (var j = 0; j < tagdls.length; j++) {
+
              for (var j = 0; j < 4; j++) {
                 var ticker = tagdls[j].textContent + '   ';  //getElementById
                 ticker = ticker.replace(/\n/g, ' ');
                 if(tagdls[j].textContent .includes('종목')){ } else {
-                    //alert(ticker);
                     result = result + '\n' + ticker;
                 }
              }
          }
     }
-    //result = result.replaceAll('장마감','');
+
     result = result.replaceAll('현재가','');
     result = result.replaceAll('전일대비',' ');
     result = result.replaceAll('하락','▼');
@@ -68,25 +65,23 @@ async function crawlcd(code, displayloc) {
     result = result.replaceAll('플러스',', +');
     result = result.replaceAll('퍼센트','%');
     
-
-    document.getElementById(displayloc).innerText = `${result}`; // div id에 넣어준다.
-    //document.getElementById('console-output').innerText = `${totaltxt}`; 
+    document.getElementById(displayloc).innerText = `${result}`; 
 }
 
 ﻿
-
-// data.go.kr(금융위원회(fsc)_주식시세정보) api를 얻어오기
-// https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=인증키&numOfRows=1&pageNo=1
-// 인증키의 경우 앞단(티스토리)에서 넘겨 받아야 함, 티스토리는 마우스 우클릭을 못하게 되어 있으므로 소스를 보지 못한다.
-// 글 쓸때마다 인증키가 들어가야하기 때문에 티스토리에서 숨김페이지를 만들고 키가저장된 js파일을 업로드하고 거기서 키를 가져온다.
+/*
+ data.go.kr(금융위원회(fsc)_주식시세정보) api를 얻어오기
+ https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=인증키&numOfRows=1&pageNo=1
+ 인증키의 경우 앞단(티스토리)에서 넘겨 받아야 함, 티스토리는 마우스 우클릭을 못하게 되어 있으므로 소스를 보지 못한다.
+*/
 async function getFscData(authkey, code, displayloc){
+    
     /* Poromise Object가 생성되지만 Reject되므로 실제 data를 가져올수 없다. html 페이지에서 받아야한다. */
     //getServiceKey().then(function(data) {
     //   alert('--o>' + data);
     //}).catch(function(err) {
     //   alert(err); // Error 출력
     //});
-
 
     const params = new URLSearchParams({
         serviceKey: authkey, // 인증키
@@ -315,6 +310,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
