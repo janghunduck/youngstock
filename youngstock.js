@@ -100,7 +100,6 @@ async function getFscData(authkey, code, displayloc){
     if (key) {
       params.set('serviceKey', key.replace(/\n/g,''));  // \n을 제거하고 다시 설정
     }
-    //const url = 'https://apis.data.go.kr/1160100/service/GetStockInfoService/getStockPriceInfo?' + params.toString();
     const url = 'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?' + params.toString();
 
     try {
@@ -333,6 +332,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
