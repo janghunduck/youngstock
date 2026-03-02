@@ -110,7 +110,7 @@ async function getFscData(authkey, code, displayloc){
     //const items = htmlDOM.querySelectorAll('.blind');
     //let  itemslen = items.length;
 
-    //document.getElementById(displayloc).innerText = `${result}`; 
+    document.getElementById(displayloc).innerText = `${htmlString}`; 
 }
 
 /*
@@ -307,6 +307,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
