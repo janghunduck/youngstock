@@ -168,12 +168,14 @@ async function getFscData(authkey, code, displayloc){
         isinCd: ""            //  ISN 코드
     });
     let key = params.get('serviceKey');
+    let resultType = params.get('resultType');
+    alert('--->' + resultType);
     if (key) {
       params.set('serviceKey', key.replace(/\n/g,''));  // \n을 제거하고 다시 설정
     }
     const url = 'https://apis.data.go.kr/1160100/service/GetStockInfoService/getStockPriceInfo?' + params.toString();
     //const url = 'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?' + params.toString();
-    const resultType = params.get('resultType');
+    
   
     const response = await fetch(url, {
         headers: {
@@ -396,6 +398,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
