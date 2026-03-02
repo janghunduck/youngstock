@@ -81,12 +81,6 @@ async function crawlcd(code, displayloc) {
 */
 async function getFscData(authkey, code, displayloc){
     
-    /* Poromise Object가 생성되지만 Reject되므로 실제 data를 가져올수 없다. html 페이지에서 받아야한다. */
-    //getServiceKey().then(function(data) {
-    //   alert('--o>' + data);
-    //}).catch(function(err) {
-    //   alert(err); // Error 출력
-    //});
     alert(authkey);
     const params = new URLSearchParams({
         serviceKey: authkey, // 인증키
@@ -313,6 +307,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
