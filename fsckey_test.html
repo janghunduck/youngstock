@@ -7,9 +7,9 @@
 <div id="console_result">&nbsp;</div>
 <script>
   
-  var key = getServiceKey();
-  document.getElementById('console_result').innerText = `${key}`;
-
+  getServiceKey();
+  var key = document.getElementById('console_result').value;
+  alert(key);
 </script>
 </body>
   
