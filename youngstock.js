@@ -85,7 +85,7 @@ async function getFscData(authkey, code, displayloc){
         serviceKey: authkey, // 인증키
         numOfRows: "1",
         pageNo: "1",
-        resultType: "json",   // 리턴 xml json
+        resultType: "xml",   // 리턴 xml json
         beginBasDt: "",       // 기준일자가 검색값보다 크거나 같은 데이터를 검색, 날짜데이터를 계산해야함
         likeSrtnCd: code,     // 주식코드 003690 (코리안리)
         isinCd: ""            //  ISN 코드
@@ -95,14 +95,16 @@ async function getFscData(authkey, code, displayloc){
       params.set('serviceKey', key.replace(/\n/g,''));  // \n을 제거하고 다시 설정
     }
     const url = 'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?' + params.toString();
-
+    const resultType = params.get('resultType');
+  
     const response = await fetch(url, {
         headers: {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
             'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7'
         }
     });
-    const jsonString = await response.text();  // json or xml 파싱 
+    const resultString = await response.text();  // json or xml 파싱 
+
     /* ------------------------------------------------------------------------
     {
       "response":
@@ -143,8 +145,11 @@ async function getFscData(authkey, code, displayloc){
        }
     }
     ---------------------------------------------------------------------- */
-  
-    const obj = JSON.parse(jsonString);
+    if (resultType === 'json'){
+      const obj = JSON.parse(resultString);
+    } else if (resultType === 'xml'){
+      
+    }
     
     //const parser = new DOMParser();
     //const htmlDOM = parser.parseFromString(htmlString, 'text/html');
@@ -152,7 +157,7 @@ async function getFscData(authkey, code, displayloc){
     //const items = htmlDOM.querySelectorAll('.blind');
     //let  itemslen = items.length;
 
-    document.getElementById(displayloc).innerText = `url=>${url} \n json=>${jsonString}`; 
+    document.getElementById(displayloc).innerText = `url=>${url} \n json=>${resultString}`; 
 }
 
 
@@ -351,6 +356,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
