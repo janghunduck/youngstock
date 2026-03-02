@@ -107,7 +107,6 @@ async function getServiceKey(){
     });
 
     const htmlString = await response.text();
-    //document.getElementById('console_result').innerText = `${htmlString}`;
     const parser = new DOMParser();
     const htmlDOM = parser.parseFromString(htmlString, 'text/html');
     const items = htmlDOM.querySelectorAll('tbody');
@@ -116,7 +115,7 @@ async function getServiceKey(){
     for (let i = 0; i < itemslen; i++) {
        result = items[i].textContent);
     }
-    return result;
+    document.getElementById('console_result').innerText = `${result}`;
 }
 
 
@@ -282,6 +281,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
