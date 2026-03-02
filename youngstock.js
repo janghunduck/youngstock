@@ -102,15 +102,20 @@ async function getFscData(authkey, code, displayloc){
             'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7'
         }
     });
-    const htmlString = await response.text();  // json or xml 파싱 
+    const jsonString = await response.text();  // json or xml 파싱 
+    /*
+
+    */
   
+    const obj = JSON.parse(jsonString);
+    
     //const parser = new DOMParser();
     //const htmlDOM = parser.parseFromString(htmlString, 'text/html');
 
     //const items = htmlDOM.querySelectorAll('.blind');
     //let  itemslen = items.length;
 
-    document.getElementById(displayloc).innerText = `${htmlString}`; 
+    document.getElementById(displayloc).innerText = `${jsonString}`; 
 }
 
 /*
@@ -307,6 +312,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
