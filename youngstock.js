@@ -80,15 +80,12 @@ async function crawlcd(code, displayloc) {
 // 인증키의 경우 앞단(티스토리)에서 넘겨 받아야 함, 티스토리는 마우스 우클릭을 못하게 되어 있으므로 소스를 보지 못한다.
 // 글 쓸때마다 인증키가 들어가야하기 때문에 티스토리에서 숨김페이지를 만들고 키가저장된 js파일을 업로드하고 거기서 키를 가져온다.
 async function getFscData(authkey, code, displayloc){
-    //var promiseObj = getServiceKey();    // Promise Object
-    //alert('===> 3 : ' +promiseObj);
-    
-    //promiseObj.then(function(data) {
-    getServiceKey().then(function(data) {
-       alert('--o>' + data);
-    }).catch(function(err) {
-       alert(err); // Error 출력
-    });
+    /* Poromise Object가 생성되지만 Reject되므로 실제 data를 가져올수 없다. html 페이지에서 받아야한다. */
+    //getServiceKey().then(function(data) {
+    //   alert('--o>' + data);
+    //}).catch(function(err) {
+    //   alert(err); // Error 출력
+    //});
 
 
     const params = new URLSearchParams({
@@ -122,7 +119,13 @@ async function getFscData(authkey, code, displayloc){
     //document.getElementById(displayloc).innerText = `${result}`; 
 }
 
-
+/*
+  1. cors 로 우회 프락시 서버를 활성화 해야한다.
+  2. 공공데이터포탈의 할당된 serviceKey에 대해서 특정 사이트에 저장하고 가져온다.
+     부득이하게 하드코딩을 피하기위해 외부에서 가져오는 방식을 취한다.
+  3. 외에 2차 보안은 serviceKey 를 자주 바꾸는 것으로 ...
+  4. todo: 암호화 처리를 추가하는 걸로 ... 
+*/
 async function getServiceKey(){
 
     const url= 'https://youngsto.tistory.com/58';
@@ -312,6 +315,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
