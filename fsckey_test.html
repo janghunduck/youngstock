@@ -11,7 +11,8 @@
   //alert(key);
 
   getServiceKey().then(function(data) {
-    alert(data); // response 값 출력
+    //alert(data); // response 값 출력
+    document.getElementById('console_result').innerText = `${data}`;
   }).catch(function(err) {
     alert(err); // Error 출력
   });
