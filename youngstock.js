@@ -183,7 +183,7 @@ async function getFscData(authkey, code, displayloc){
         }
     });
     const resultString = await response.text();  // json or xml 파싱 
-
+    alert(resultString);
 
     if (resultType == 'json'){
       const obj = JSON.parse(resultString);
@@ -397,6 +397,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
