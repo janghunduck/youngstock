@@ -185,6 +185,7 @@ async function getFscData(authkey, code, displayloc){
 
     if (resultType == 'json'){
       const obj = JSON.parse(resultString);
+      //obj.response.body.items.item;
       
     } else if (resultType == 'xml'){
       
@@ -395,6 +396,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
