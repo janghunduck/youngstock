@@ -156,7 +156,7 @@ async function getFscData(authkey, code, displayloc){
         numOfRows: "1",
         pageNo: "1",
         resultType: "json",   // 리턴 xml json
-        beginBasDt: "",       // 기준일자가 검색값보다 크거나 같은 데이터를 검색, 날짜데이터를 계산해야함
+        beginBasDt: "",       // 기준일자가 검색값보다 크거나 같은 데이터를 검색, 날짜데이터를 계산해야함, 기본 최신 날짜의 정보를 가져옴(default)
         likeSrtnCd: code,     // 주식코드 003690 (코리안리)
         isinCd: ""            //  ISN 코드
     });
@@ -181,10 +181,19 @@ async function getFscData(authkey, code, displayloc){
       }
       
       const resultString = await response.text();  // html형태로 받음, response.json();으로도 가능
+      const arr = [];
       if (resultType == 'json'){
         const obj = JSON.parse(resultString);
-        //obj.response.body.items.item;
-      
+        arr = obj.response.body.items.item;     //  "item":[ { "basDt":"20260226", "srtnCd":"002960", ... } ] 배열안에 하나의 object
+        // if(arr.length == 1)   // 1개의 length 만 존재한다.
+        // arr[0].basDt   // 20260226
+        // arr[0].srtnCd  // 002960
+        // arr[0].isinCd
+        // arr[0].itmsNm
+        // arr[0].mrktCtg
+        // arr[0].clpr
+        // arr[0].vs
+        // arr[0].fltR
       } else if (resultType == 'xml'){
       
       }
@@ -402,6 +411,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
