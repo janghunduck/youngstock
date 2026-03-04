@@ -167,7 +167,7 @@ async function getFscData(authkey, code, displayloc){
       params.set('serviceKey', key.replace(/\n/g,''));  // \n을 제거하고 다시 설정
     }
     const url = 'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?' + params.toString();
-
+    result += `<p>${url</p>}`;
     try {
       const response = await fetch(url, {
           headers: {
@@ -403,6 +403,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
