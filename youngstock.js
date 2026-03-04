@@ -146,7 +146,7 @@ async function crawlOther(code, displayloc, urlString) {
  https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?serviceKey=인증키&numOfRows=1&pageNo=1
  인증키의 경우 앞단(티스토리)에서 넘겨 받아야 함, 티스토리는 마우스 우클릭을 못하게 되어 있으므로 소스를 보지 못한다.
  금융위원회에서 제공하는 모든 서비스는 실시간이 아니며, 데이터 갱신은 기준일자로부터 영업일 하루 뒤 오후 1시 이후에 업데이트됩니다.
- todo: url 자체도 숨기기위해 앞단에서 받아온다. cors 정책으로 js안에서 접속이 않될 수 있다.
+ todo: url 자체도 숨기기위해 앞단에서 받아온다. cors 해당사항 없음
 --------------------------------------------------------------------------------------------------------------- */
 async function getFscData(authkey, code, displayloc){
 
@@ -411,6 +411,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
