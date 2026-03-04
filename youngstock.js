@@ -150,7 +150,7 @@ async function crawlOther(code, displayloc, urlString) {
 --------------------------------------------------------------------------------------------------------------- */
 async function getFscData(authkey, code, displayloc){
 
-    const container = document.getElementById(displayloc);
+    var container = document.getElementById(displayloc);
     const result = '';
     const params = new URLSearchParams({
         serviceKey: authkey, // 인증키
@@ -167,7 +167,7 @@ async function getFscData(authkey, code, displayloc){
       params.set('serviceKey', key.replace(/\n/g,''));  // \n을 제거하고 다시 설정
     }
     const url = 'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?' + params.toString();
-    result += `<p>${url</p>}`;
+    result += `<p>${url}</p>}`;
     try {
       const response = await fetch(url, {
           headers: {
@@ -212,7 +212,7 @@ async function getFscData(authkey, code, displayloc){
   4. todo: 암호화 처리를 추가하는 걸로 ... 
 --------------------------------------------------------------------------------------- */
 async function getServiceKey(){
-    const log = '';
+    var log = '';
     const url= 'https://youngsto.tistory.com/58';
     const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; //cors 우회 프록시 서버 URL
     const decodedUrl = decodeURI( url );
@@ -403,6 +403,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
