@@ -176,7 +176,6 @@ async function getFscData(authkey, code, displayloc){
       });
 
       if (!response.ok) {
-
         container.innerHTML += `<p>response not ok! </br> ${url}</p>`;
         throw new Error(`HTTP error! status: ${response.status}`);  // If not ok (e.g., 404, 500), throw an error to be caught by the catch block
       }
@@ -195,13 +194,10 @@ async function getFscData(authkey, code, displayloc){
 
       //const items = htmlDOM.querySelectorAll('.blind');
       //let  itemslen = items.length;
-
-      document.getElementById(displayloc).innerText = `url=>${url} \n json=>${resultString}`; 
+      container.innerHTML += `url=>${url} \n json=>${resultString}`; 
     } catch(err) {
       alert("Could not fetch data:" + error.message);
     }
-
-
 }
 
 
@@ -400,6 +396,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
