@@ -166,7 +166,6 @@ async function getFscData(authkey, code, displayloc){
       params.set('serviceKey', key.replace(/\n/g,''));  // \n을 제거하고 다시 설정
     }
     const url = 'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?' + params.toString();
-    alert(url);
     container.innerHTML += `<p>${url}</p>`;
     try {
       const response = await fetch(url, {
@@ -177,29 +176,32 @@ async function getFscData(authkey, code, displayloc){
       });
 
       if (!response.ok) {
-        document.getElementById(displayloc).innerText = `${url}`; 
+
+        container.innerHTML += `<p>response not ok! </br> ${url}</p>`;
         throw new Error(`HTTP error! status: ${response.status}`);  // If not ok (e.g., 404, 500), throw an error to be caught by the catch block
       }
+      
       const resultString = await response.text();  // html형태로 받음, response.json();으로도 가능
+      if (resultType == 'json'){
+        const obj = JSON.parse(resultString);
+        //obj.response.body.items.item;
+      
+      } else if (resultType == 'xml'){
+      
+      }
+    
+      //const parser = new DOMParser();
+      //const htmlDOM = parser.parseFromString(htmlString, 'text/html');
+
+      //const items = htmlDOM.querySelectorAll('.blind');
+      //let  itemslen = items.length;
+
+      document.getElementById(displayloc).innerText = `url=>${url} \n json=>${resultString}`; 
     } catch(err) {
       alert("Could not fetch data:" + error.message);
     }
 
-    if (resultType == 'json'){
-      const obj = JSON.parse(resultString);
-      //obj.response.body.items.item;
-      
-    } else if (resultType == 'xml'){
-      
-    }
-    
-    //const parser = new DOMParser();
-    //const htmlDOM = parser.parseFromString(htmlString, 'text/html');
 
-    //const items = htmlDOM.querySelectorAll('.blind');
-    //let  itemslen = items.length;
-
-    document.getElementById(displayloc).innerText = `url=>${url} \n json=>${resultString}`; 
 }
 
 
@@ -398,6 +400,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
