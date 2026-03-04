@@ -218,6 +218,7 @@ async function getServiceKey(){
     const decodedUrl = decodeURI( url );
     log += `<p>${proxyUrl}${url}</br></p>`;
     log += `<p>${proxyUrl}${decodedUrl}</br></p>`;
+    document.getElementById('console_resulta').innerText = `${log}`; 
     const response = await fetch(proxyUrl + url, {
         headers: {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
@@ -227,7 +228,7 @@ async function getServiceKey(){
 
     const htmlString = await response.text();
     log += `<p>${htmlString}</br></p>`;
-    document.getElementById('console_result').innerText = `${log}`; 
+    document.getElementById('console_resulta').innerText = `${log}`; 
   
     const parser = new DOMParser();
     const htmlDOM = parser.parseFromString(htmlString, 'text/html');
@@ -403,6 +404,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
