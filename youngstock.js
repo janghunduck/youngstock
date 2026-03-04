@@ -167,8 +167,8 @@ async function getFscData(authkey, code, displayloc){
       params.set('serviceKey', key.replace(/\n/g,''));  // \n을 제거하고 다시 설정
     }
     const url = 'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?' + params.toString();
-    result += `<p>${url}</p>}`;
-    document.getElementById(displayloc).innerText = `${result}`; 
+    result += `${url} \n `;
+    container.innerText = `${result}`; 
     try {
       const response = await fetch(url, {
           headers: {
@@ -178,7 +178,7 @@ async function getFscData(authkey, code, displayloc){
       });
 
       if (!response.ok) {
-        result += `<p>response not ok! </br> ${url}</p>`;
+        result += `response not ok! ${url} \n`;
         throw new Error(`HTTP error! status: ${response.status}`);  // If not ok (e.g., 404, 500), throw an error to be caught by the catch block
       }
       
@@ -196,7 +196,7 @@ async function getFscData(authkey, code, displayloc){
 
       //const items = htmlDOM.querySelectorAll('.blind');
       //let  itemslen = items.length;
-      result += `<p>last result : </br>${url} </br> json=>${resultString} </p>`; 
+      result += `last result : ${url} \n json=>${resultString} </p>`; 
       container.innerHTML += `${result}`; 
     } catch(err) {
       alert("Could not fetch data:" + error.message);
@@ -405,6 +405,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
