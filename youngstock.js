@@ -176,7 +176,7 @@ async function getFscData(authkey, code, displayloc){
       });
 
       if (!response.ok) {
-        container.innerText = `response not ok! ${url} \n`;
+        alert(`response not ok! ${url} \n`);
         throw new Error(`HTTP error! status: ${response.status}`);  // If not ok (e.g., 404, 500), throw an error to be caught by the catch block
       }
       
@@ -402,6 +402,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
