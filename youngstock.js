@@ -149,7 +149,7 @@ async function crawlOther(code, displayloc, urlString) {
  todo: url 자체도 숨기기위해 앞단에서 받아온다. cors 정책으로 js안에서 접속이 않될 수 있다.
 --------------------------------------------------------------------------------------------------------------- */
 async function getFscData(authkey, code, displayloc){
-    
+    alert('call getFscData');
     const params = new URLSearchParams({
         serviceKey: authkey, // 인증키
         numOfRows: "1",
@@ -210,7 +210,7 @@ async function getFscData(authkey, code, displayloc){
   4. todo: 암호화 처리를 추가하는 걸로 ... 
 --------------------------------------------------------------------------------------- */
 async function getServiceKey(){
-
+    alert('call getServiceKey');
     const url= 'https://youngsto.tistory.com/58';
     const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; //cors 우회 프록시 서버 URL
     const decodedUrl = decodeURI( url );
@@ -396,6 +396,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
