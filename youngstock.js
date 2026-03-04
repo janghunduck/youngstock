@@ -196,7 +196,7 @@ async function getFscData(authkey, code, displayloc){
 
       //const items = htmlDOM.querySelectorAll('.blind');
       //let  itemslen = items.length;
-      result += `last result : ${url} \n json=>${resultString} </p>`; 
+      result += `last result : ${url} \n ${resultString}`; 
       container.innerHTML += `${result}`; 
     } catch(err) {
       alert("Could not fetch data:" + error.message);
@@ -217,8 +217,8 @@ async function getServiceKey(){
     const url= 'https://youngsto.tistory.com/58';
     const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; //cors 우회 프록시 서버 URL
     const decodedUrl = decodeURI( url );
-    log += `<p>${proxyUrl}${url}</br></p>`;
-    log += `<p>${proxyUrl}${decodedUrl}</br></p>`;
+    log += `${proxyUrl}${url}`;
+    log += `${proxyUrl}${decodedUrl}`;
     document.getElementById('console_resulta').innerText = `${log}`; 
     const response = await fetch(proxyUrl + url, {
         headers: {
@@ -228,7 +228,7 @@ async function getServiceKey(){
     });
 
     const htmlString = await response.text();
-    log += `<p>${htmlString}</br></p>`;
+    log += `${htmlString}`;
     document.getElementById('console_resulta').innerText = `${log}`; 
   
     const parser = new DOMParser();
@@ -405,6 +405,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
