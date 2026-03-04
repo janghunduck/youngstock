@@ -212,7 +212,6 @@ async function getFscData(authkey, code, displayloc){
   4. todo: 암호화 처리를 추가하는 걸로 ... 
 --------------------------------------------------------------------------------------- */
 async function getServiceKey(){
-    alert('call getServiceKey');
     const url= 'https://youngsto.tistory.com/58';
     const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; //cors 우회 프록시 서버 URL
     const decodedUrl = decodeURI( url );
@@ -398,6 +397,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
