@@ -168,6 +168,7 @@ async function getFscData(authkey, code, displayloc){
     }
     const url = 'https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo?' + params.toString();
     result += `<p>${url}</p>}`;
+    document.getElementById(displayloc).innerText = `${result}`; 
     try {
       const response = await fetch(url, {
           headers: {
@@ -404,6 +405,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
