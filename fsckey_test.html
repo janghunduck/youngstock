@@ -7,7 +7,7 @@
 <div id="console_resulta">&nbsp;</div>
 <script>
   getServiceKey().then(function(key) { // Promise 동기식 처리가 되는지 ...
-    //alert('key='+ key);
+    alert('key='+ key);
     document.getElementById('console_result').innerText = key;
     
     // key 는 여기 안에서 처리해야한다.
@@ -15,7 +15,7 @@
        alert(key);
        getFscData(key, '002960', 'console_resulta');
     } else {
-       //alert('not key');
+       alert('not key');
        getFscData('3d8f600d74f8b9377b23b88dbde223d8948ae92f8721b2326c773f125842ab74', '002960', 'console_resulta');
        //document.getElementById('console_resulta').innerText = 'serviceKey is 0';
     }
