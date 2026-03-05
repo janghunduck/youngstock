@@ -18,6 +18,12 @@ async function proxyrun(){
 
 }
 
+/*
+cors 정책이 porxy 에도 적용될수 있음. 해서 테스트가 필요함.
+cors 가 적용되지 않는데 괜히 그렇필요가 없어 보임. - 가스라이팅 당하지느 말자.
+*/ 
+
+
 
 /**
 https://finance.finup.co.kr/Stock/002960
@@ -441,6 +447,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
