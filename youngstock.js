@@ -258,6 +258,7 @@ async function getFscData(authkey, code, displayloc){
      부득이하게 하드코딩을 피하기위해 외부에서 가져오는 방식을 취한다.
   3. 외에 2차 보안은 serviceKey 를 자주 바꾸는 것으로 ...
   4. todo: 암호화 처리를 추가하는 걸로 ... 
+  5. todo: 프록시 우회 삭제요청, 테스트 요청
 --------------------------------------------------------------------------------------- */
 async function getServiceKey(){
     var log = '';
@@ -452,6 +453,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
