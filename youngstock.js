@@ -1,3 +1,21 @@
+/*
+cors 정책에 안맞는 사이트에 대해서 우회한다.
+
+<form>
+  <p>This demo of CORS Anywhere should only be used for development purposes, see 
+     <a href="https://github.com/Rob--W/cors-anywhere/issues/301">https://github.com/Rob--W/cors-anywhere/issues/301</a>.
+  <p>To temporarily unlock access to the demo, click on the following button: <input type="submit" value="Request temporary access to the demo server">
+  <input type="hidden" name="accessRequest" value="387bf3920583411602f04ef5852f1eb4076119a33f1872426fe1320692c2a9b0">
+</form>
+
+https://github.com/Rob--W/cors-anywhere/issues/301?accessRequest=387bf3920583411602f04ef5852f1eb4076119a33f1872426fe1320692c2a9b0
+
+*/
+async function proxyrun(){
+
+}
+
+
 /**
 https://finance.finup.co.kr/Stock/002960
 https://janghunduck.github.io/youngstock/finup_result.html
@@ -420,6 +438,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
