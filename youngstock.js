@@ -254,7 +254,6 @@ async function getFscData(authkey, code, displayloc){
   2. 공공데이터포탈의 할당된 serviceKey에 대해서 특정 사이트에 저장하고 가져온다.
      여기서 특정사이트에 대해 서버런 해서 관리하면 좋지만, 말단 입장에서 어디 둘때도 없으니 부득이하게 안전한 곳에 두고 사용하자!
      참 고민이지만, 보안이 튼튼한 곳에 빌붓으려니 한 단계 접고 가야하고 어떻게든 숨기긴 해야 하고.
-     i yoobikkk@naver.com
      부득이하게 하드코딩을 피하기위해 외부에서 가져오는 방식을 취한다.
   3. 외에 2차 보안은 serviceKey 를 자주 바꾸는 것으로 ...
   4. todo: 암호화 처리를 추가하는 걸로 ... 
@@ -452,6 +451,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
