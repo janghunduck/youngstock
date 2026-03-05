@@ -3,6 +3,7 @@ cors 정책에 안맞는 사이트에 대해서 우회한다.
 cors 정책에 안맞는 사이트는 이 함수에 체크해 Porxy 서버가 활성화 되었는지 체크한다.
 수동으로 porxy 서버를 생성하지 않고 실행돼 있는지 체크해서 안되어 있음 활성화 시킨다.
 나만 보면 돼는데 수동으로 하면 돼지 남들 위해 왜 체크하고 활성화 해 줘야 함?
+이 함순 cors가 실행하고 잇는지 아닌지 check한다
 
 <form>
   <p>This demo of CORS Anywhere should only be used for development purposes, see 
@@ -21,6 +22,7 @@ async function proxyrun(){
 /*
 cors 정책이 porxy 에도 적용될수 있음. 해서 테스트가 필요함.
 cors 가 적용되지 않는데 괜히 그렇필요가 없어 보임. - 가스라이팅 당하지느 말자.
+이 함순 cors가 필요한지 안한지 check 한다.
 */ 
 
 
@@ -447,6 +449,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
