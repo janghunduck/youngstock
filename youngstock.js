@@ -194,6 +194,7 @@ async function getFscData(authkey, code, displayloc){
         // arr[0].clpr
         // arr[0].vs
         // arr[0].fltR
+        
       } else if (resultType == 'xml'){
       
       }
@@ -411,6 +412,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
