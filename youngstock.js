@@ -115,7 +115,7 @@ function _gethostname(urlString){
 
 /* ----------------------------------------------------------------------------------------------
 crawlcd 에서 응답이 없는 경우 crawlcd 함수 안에서 호출된다.
-crawlcd 함수와 동일하나 urlSting를 인자로 받는다.
+crawlcd 함수와 동일하나 urlSting(https://....)를 인자로 받는다.
 이 함수는 재귀함수로 다시 응답이 없으면 다른 url로 재 호출하고 url의 hostname를 구분자로 파싱을 수행한다. 
 ------------------------------------------------------------------------------------------------ */
 async function crawlOther(code, displayloc, urlString) {
@@ -453,6 +453,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
