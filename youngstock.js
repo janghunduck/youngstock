@@ -181,11 +181,19 @@ async function getFscData(authkey, code, displayloc){
       }
       
       const resultString = await response.text();  // html형태로 받음, response.json();으로도 가능
-      const arr = [];
+      var items = {};
+      var item = [];
       if (resultType == 'json'){
         const obj = JSON.parse(resultString);
-        arr = obj.response.body.items.item;     //  "item":[ { "basDt":"20260226", "srtnCd":"002960", ... } ] 배열안에 하나의 object
-        // if(arr.length == 1)   // 1개의 length 만 존재한다.
+        items = obj.response.body.items;   // { {[]}, {[]}, ...} 
+        for (var i=0; i < items.length-1; i++){
+           //items[i];
+        }
+                                              //  "item":[ { "basDt":"20260226", "srtnCd":"002960", ... } ] 배열안에 하나의 object
+        
+        //for ( var i = 0; i < arr.length; i++ ){
+        //  node = arr[i];
+        //}
         // arr[0].basDt   // 20260226
         // arr[0].srtnCd  // 002960
         // arr[0].isinCd
@@ -412,6 +420,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
