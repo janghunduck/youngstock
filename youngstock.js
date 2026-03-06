@@ -195,11 +195,11 @@ async function crawlcd(code, displayloc) {
 <script src="https://janghunduck.github.io/youngstock/youngstock.js"></script>
 <script>crawlcd('279570', 'console_result');</script>
 */
-function disphtml(displayloc){
+function disphtml(code, displayloc){
     var realstock = `
           <div id="console_result">&nbsp;</div>
           <script src="https://janghunduck.github.io/youngstock/youngstock.js"></script>
-          <script>crawlcd('279570', 'console_result');</script>
+          <script>crawlcd(code, displayloc);</script>
         `;
     document.getElementById(displayloc).innerHtml = `${realstock}`;      
 }
@@ -536,6 +536,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
