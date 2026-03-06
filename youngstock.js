@@ -47,6 +47,7 @@ XMLHttpRequest API를 통해 접근할 수 있습니다.
 
 */
 async function proxyrun(){
+    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
     var url = 'https://cors-anywhere.herokuapp.com/corsdemo?accessRequest=387bf3920583411602f04ef5852f1eb4076119a33f1872426fe1320692c2a9b0';
     var result = '';
     const response = await fetch(url, {
@@ -501,6 +502,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
