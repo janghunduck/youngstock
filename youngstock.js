@@ -50,7 +50,7 @@ async function proxyrun(){
     const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
     var url = 'https://cors-anywhere.herokuapp.com/corsdemo?accessRequest=387bf3920583411602f04ef5852f1eb4076119a33f1872426fe1320692c2a9b0';
     var result = '';
-    const response = await fetch(url, {
+    const response = await fetch(proxyUrl + url, {
           method: 'GET',
           headers: {
               'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
@@ -502,6 +502,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
