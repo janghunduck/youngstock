@@ -27,7 +27,7 @@ async function proxyrun(){
     if (!response.ok) {  // 실패
         // response.status http응답코드, response.headers 
         throw new Error(`HTTP error! status: ${response.status}`);  // If not ok (e.g., 404, 500), throw an error to be caught by the catch block
-    } else {  // 성공, 200~299이면 true
+    } else {            // 성공, 200~299이면 true
         const htmlString = await response.text();
         result = `${htmlString}`;
     }
@@ -469,6 +469,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
