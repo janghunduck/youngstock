@@ -58,6 +58,24 @@ CORS Anywhere 데모 서버(cors-anywhere.herokuapp.com)는 이 프로젝트의 
 2021년 2월 1일부터 cors-anywhere.herokuapp.com은 방문자가 특정 조건을 충족한 후에만 요청을 처리합니다. 
 사용자(개발자)는 cors-anywhere.herokuapp.com의 특정 페이지를 방문하여 브라우저에서 데모 버전을 일시적으로 활성화해야 합니다.
 이를 통해 개발자는 기능을 미리 체험해보고 자체 호스팅 여부를 결정하거나 다른 대안을 모색할 수 있습니다.
+
+필요에 따라 도메인 간 요청을 자동으로 활성화하려면 다음 코드 조각을 사용하십시오.
+(function() {
+    var cors_api_host = 'cors-anywhere.herokuapp.com';
+    var cors_api_url = 'https://' + cors_api_host + '/';
+    var slice = [].slice;
+    var origin = window.location.protocol + '//' + window.location.host;
+    var open = XMLHttpRequest.prototype.open;
+    XMLHttpRequest.prototype.open = function() {
+        var args = slice.call(arguments);
+        var targetOrigin = /^https?:\/\/([^\/]+)/i.exec(args[1]);
+        if (targetOrigin && targetOrigin[0].toLowerCase() !== origin &&
+            targetOrigin[1] !== cors_api_host) {
+            args[1] = cors_api_url + args[1];
+        }
+        return open.apply(this, args);
+    };
+})();
 =============================================================================
 */
 async function proxyrun(){
@@ -503,6 +521,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
