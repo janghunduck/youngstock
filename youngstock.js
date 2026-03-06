@@ -189,6 +189,21 @@ async function crawlcd(code, displayloc) {
     }
 }
 
+/*
+티스토리에서 코드를 줄이기 위해 여기서 구성한다.
+<div id="console_result">&nbsp;</div>
+<script src="https://janghunduck.github.io/youngstock/youngstock.js"></script>
+<script>crawlcd('279570', 'console_result');</script>
+*/
+function disphtml(displayloc){
+    var realstock = `
+          <div id="console_result">&nbsp;</div>
+          <script src="https://janghunduck.github.io/youngstock/youngstock.js"></script>
+          <script>crawlcd('279570', 'console_result');</script>
+        `;
+    document.getElementById(displayloc).innerHtml = `${realstock}`;      
+}
+
 function _gethostname(urlString){
   const url = new URL(urlString);
   return url.hostname; // "www.example.com" (도메인만)  
@@ -521,6 +536,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
