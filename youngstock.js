@@ -229,6 +229,7 @@ async function crawlOther(code, displayloc, urlString) {
 async function getFscData(authkey, code, displayloc){
 
     var container = document.getElementById(displayloc);
+    
     const params = new URLSearchParams({
         serviceKey: authkey, // 인증키
         numOfRows: "1",
@@ -259,38 +260,24 @@ async function getFscData(authkey, code, displayloc){
       }
       
       const resultString = await response.text();  // html형태로 받음, response.json();으로도 가능
-      var items = {};
-      var item = [];
+      
       if (resultType == 'json'){
-        const obj = JSON.parse(resultString);
-        items = obj.response.body.items;   // { {[]}, {[]}, ...} 
-        for (var i=0; i < items.length-1; i++){
-           //items[i];
-        }
-                                              //  "item":[ { "basDt":"20260226", "srtnCd":"002960", ... } ] 배열안에 하나의 object
-        
-        //for ( var i = 0; i < arr.length; i++ ){
-        //  node = arr[i];
-        //}
-        // arr[0].basDt   // 20260226
-        // arr[0].srtnCd  // 002960
-        // arr[0].isinCd
-        // arr[0].itmsNm
-        // arr[0].mrktCtg
-        // arr[0].clpr
-        // arr[0].vs
-        // arr[0].fltR
-        
+          const obj = JSON.parse(resultString);
+          var items = obj.response.body.items;   // { {[]}, {[]}, ...} 
+          var dispitem = '';
+          for (var i=0; i < items.length; i++){  // "item":[ { "basDt":"20260226", "srtnCd":"002960", ... } ] 배열안에 하나의 object
+          	  if (i == items.length-1){
+  		            dispitem += items[i].basDt + '/' + items[i].clpr + '/' + items[i].vs + '/' + items[i].fltRt;
+       	      } else {
+  		            dispitem += items[i].basDt + '/' + items[i].clpr + '/' + items[i].vs + '/' + items[i].fltRt + '\n';
+  	          }
+          }                             
+          container.innerHTML += `${dispitem}`;  
       } else if (resultType == 'xml'){
       
       }
-    
-      //const parser = new DOMParser();
-      //const htmlDOM = parser.parseFromString(htmlString, 'text/html');
 
-      //const items = htmlDOM.querySelectorAll('.blind');
-      //let  itemslen = items.length;
-      container.innerHTML += `last result : ${url} \n ${resultString}`; 
+      
     } catch(err) {
       alert("Could not fetch data:" + error.message);
     }
@@ -502,6 +489,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
