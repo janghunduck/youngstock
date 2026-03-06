@@ -45,6 +45,20 @@ XMLHttpRequest API를 통해 접근할 수 있습니다.
 소스 코드: https://github.com/Rob--W/cors-anywhere/
 문서: https://github.com/Rob--W/cors-anywhere/#documentation
 
+================================  중요 ======================================
+CORS Anywhere 데모 서버(cors-anywhere.herokuapp.com)는 이 프로젝트의 데모용으로 만들어졌습니다. 
+하지만 악용 사례가 너무 빈번해져서 데모를 호스팅하는 플랫폼인 Heroku 측에서 서버 종료를 요청했습니다. 
+악용을 막기 위해 여러 노력을 기울였지만(요청 번호 #45 및 #164 에서 속도 제한을 적용하고 다른 유형의 요청을 차단하는 등) 소용이 없었습니다. 
+악용 사례와 그 인기로 인해 서버 다운이 점점 더 빈번해지고 있습니다(예: 최근 #300 , #299 , #295 , #294 , #287 ).
+
+이를 해결하기 위해 다음과 같은 변경 사항을 적용하겠습니다.
+
+시간당 사용량 제한이 200건( PSA: 남용 방지 대책  #164 )에서 50건으로 감소합니다.
+2021년 1월 31일까지 cors-anywhere.herokuapp.com은 오픈 프록시 역할을 중단합니다.
+2021년 2월 1일부터 cors-anywhere.herokuapp.com은 방문자가 특정 조건을 충족한 후에만 요청을 처리합니다. 
+사용자(개발자)는 cors-anywhere.herokuapp.com의 특정 페이지를 방문하여 브라우저에서 데모 버전을 일시적으로 활성화해야 합니다.
+이를 통해 개발자는 기능을 미리 체험해보고 자체 호스팅 여부를 결정하거나 다른 대안을 모색할 수 있습니다.
+=============================================================================
 */
 async function proxyrun(){
     const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
@@ -489,6 +503,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
