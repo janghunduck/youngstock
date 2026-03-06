@@ -16,7 +16,21 @@ https://github.com/Rob--W/cors-anywhere/issues/301?accessRequest=387bf3920583411
 
 */
 async function proxyrun(){
-
+    var url = 'https://github.com/Rob--W/cors-anywhere/issues/301?accessRequest=387bf3920583411602f04ef5852f1eb4076119a33f1872426fe1320692c2a9b0';
+    var result = '';
+    const response = await fetch(url, {
+          headers: {
+              'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+              'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7'
+          }
+    });
+    if (!response.ok) {  // 실패
+        // response.status http응답코드, response.headers 
+        throw new Error(`HTTP error! status: ${response.status}`);  // If not ok (e.g., 404, 500), throw an error to be caught by the catch block
+    } else {  // 성공, 200~299이면 true
+        const htmlString = await response.text();
+        
+    }
 }
 
 /*
@@ -66,12 +80,13 @@ async function crawlcd(code, displayloc) {
             'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7'
         }
     });
-    if (!response.ok) {   // 200~299이면 true, response.status http응답코드, response.headers 
+    if (!response.ok) {   // 실패 
         // 여기서 부터는 재귀를 사용하고, 파싱에서 뽑을 때는 url를 체크(도메인)해서 처리한다.
         // crawlOther(code, displayloc, url);
         // finup.co.kr에 접속해 가져온다. 우회경로 사용.
+        // response.status http응답코드, response.headers 
         // throw new Error(`HTTP error! status: ${response.status}`);  // If not ok (e.g., 404, 500), throw an error to be caught by the catch block
-    } else {
+    } else {  // 성공,  200~299이면 true
         const htmlString = await response.text();
         const parser = new DOMParser();
         const htmlDOM = parser.parseFromString(htmlString, 'text/html');
@@ -453,6 +468,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
