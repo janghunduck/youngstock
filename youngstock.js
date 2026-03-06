@@ -306,7 +306,7 @@ async function getFscData(authkey, code, displayloc){
           }                             
           container.innerHTML += `${dispitem}`;  
       } else if (resultType == 'xml'){
-      
+          // xml은 사용하지 않는걸로 
       }
 
       
@@ -521,6 +521,7 @@ async function getCoinPrice(code, displayloc) {
         };
 
 }
+
 
 
 
