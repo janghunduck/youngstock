@@ -492,7 +492,12 @@ async function crawlhtml(url) {
     document.getElementById('console_result').innerText = `${htmlString}`; 
 }
 
-// 코인
+/* -------------------------------------------------------------------
+JavaScript를 사용하여 업비트(Upbit) 시세를 조회하는 방법은 크게 두 가지가 있습니다. 
+단순 시세 확인용(REST API)과 실시간 시세용(WebSocket)입니다. 
+별도의 인증 키 없이 public 데이터 조회 가능합니다. 
+upbit_.odt 참조
+---------------------------------------------------------------------- */
 async function getBtcPrice() {
   fetch('https://api.upbit.com/v1/ticker?markets=KRW-BTC')
     .then(response => response.json())
@@ -500,7 +505,6 @@ async function getBtcPrice() {
       const price = data[0].trade_price;
       console.log(`현재 비트코인 가격: ${price.toLocaleString()} KRW`);
         document.getElementById('console_result').innerText = `${price.toLocaleString()} KRW`; 
-      // 여기에 화면에 가격을 표시하는 로직 추가
     })
     .catch(error => console.error('에러 발생:', error));
 }
@@ -583,11 +587,8 @@ kg모빌리티 1000
 
 
 
-/* -------------------------------------------------------------------
-JavaScript를 사용하여 업비트(Upbit) 시세를 조회하는 방법은 크게 두 가지가 있습니다. 
-단순 시세 확인용(REST API)과 실시간 시세용(WebSocket)입니다. 
-별도의 인증 키 없이 public 데이터 조회 가능합니다. 
----------------------------------------------------------------------- */
+
+
 
 
 
