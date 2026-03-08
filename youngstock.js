@@ -672,6 +672,7 @@ kg모빌리티 1000
 
 /* ---------------------------------------------------------------------------
 -. 이 함수는 등록된 글을 파싱하고 지분구조를 자동 구조화 시킨다.
+-. https://github.com/fancimage/ternlight 묘듈을 이용
 -. 현재페이지의 Html 전체 소스를 가져온다
 1. 전체소스 document.documentElement.outerHTML;
 2. <body> 내용만 가져오기: document.body.innerHTML;
@@ -684,6 +685,7 @@ function getCurrentHtml{
 
    document.getElementById('console_result').innerText = `${chtml}`;
 }
+
 
 
 
