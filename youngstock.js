@@ -502,15 +502,17 @@ async function getBtcPrice() {
   fetch('https://api.upbit.com/v1/ticker?markets=KRW-BTC')
     .then(response => response.json())
     .then(data => {
-      const price = data[0].trade_price;
-      console.log(`현재 비트코인 가격: ${price.toLocaleString()} KRW`);
-        document.getElementById('console_result').innerText = `${price.toLocaleString()} KRW`; 
+        const price = data[0].trade_price;
+        const changerate = data[0].signed_change_rate * 100 + "%"
+      
+        document.getElementById('console_result').innerText = `현재 비트코인 가격: ${price.toLocaleString()} KRW, 전일대비: ${changerate}`; 
     })
     .catch(error => console.error('에러 발생:', error));
 }
 
-
-// 코인
+/*
+WebSocket in bithumb
+*/
 async function getCoinPrice(code, displayloc) {
         const websocket = new WebSocket('wss://pubwss.bithumb.com/pub/ws');
 
@@ -584,6 +586,7 @@ kg모빌리티 1000
 2026년 03월 06일 16시 10분 기준 장마감
 3,505 ▼ 5 , - 0.14 %
 */
+
 
 
 
