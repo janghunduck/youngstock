@@ -503,7 +503,7 @@ async function getBtcPrice() {
     .then(response => response.json())
     .then(data => {
         const price = data[0].trade_price;
-        const changerate = data[0].signed_change_rate * 100 + "%"
+        const changerate = data[0].signed_change_rate * 100 + "%";
       
         document.getElementById('console_result').innerText = `현재 비트코인 가격: ${price.toLocaleString()} KRW, 전일대비: ${changerate}`; 
     })
@@ -586,6 +586,7 @@ kg모빌리티 1000
 2026년 03월 06일 16시 10분 기준 장마감
 3,505 ▼ 5 , - 0.14 %
 */
+
 
 
 
