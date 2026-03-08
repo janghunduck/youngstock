@@ -670,7 +670,20 @@ kg모빌리티 1000
 3,505 ▼ 5 , - 0.14 %
 */
 
+/* ---------------------------------------------------------------------------
+-. 이 함수는 등록된 글을 파싱하고 지분구조를 자동 구조화 시킨다.
+-. 현재페이지의 Html 전체 소스를 가져온다
+1. 전체소스 document.documentElement.outerHTML;
+2. <body> 내용만 가져오기: document.body.innerHTML;
+3. 현재페이지 URL : window.location.href
+------------------------------------------------------------------------------ */
 
+function getCurrentHtml{
+   const chtml = document.documentElement.outerHTML;
+   // 현재 페이지의 html 를 파싱한다.
+
+   document.getElementById('console_result').innerText = `${chtml}`;
+}
 
 
 
