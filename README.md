@@ -16,8 +16,8 @@
 <script>crawl(url);</script>
 ```
 
-https://janghunduck.github.io/youngstock/test/google.html </br>
-https://janghunduck.github.io/youngstock/test/naver.html  </br>
+# https://janghunduck.github.io/youngstock/test/google.html
+# https://janghunduck.github.io/youngstock/test/naver.html  
 
 # usage 3 - return bitcoin
 
@@ -30,5 +30,5 @@ getBtcPrice(); // or getbtcPrice('KRW-ETH');
 </script>
 ```
 
-https://janghunduck.github.io/youngstock/test/upbit.html  </br>
+# https://janghunduck.github.io/youngstock/test/upbit.html 
 
