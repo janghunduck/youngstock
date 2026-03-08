@@ -25,8 +25,8 @@ https://janghunduck.github.io/youngstock/test/naver.html  </br>
 <div id="console_result">&nbsp;</div>
 <script src="https://janghunduck.github.io/youngstock/youngstock.js"></script>
 <script>
-setInterval(getBtcPrice, 2000);  // refresh interval 2 sec
-getBtcPrice(); 
+// setInterval(getBtcPrice, 2000);  // refresh interval 2 sec
+getBtcPrice(); // or getbtcPrice('KRW-ETH');
 </script>
 ```
 
