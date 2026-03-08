@@ -679,12 +679,13 @@ kg모빌리티 1000
 3. 현재페이지 URL : window.location.href
 ------------------------------------------------------------------------------ */
 
-function getCurrentHtml{
+function getCurrentHtml(){
    const chtml = document.documentElement.outerHTML;
    // 현재 페이지의 html 를 파싱한다.
 
    document.getElementById('console_result').innerText = `${chtml}`;
 }
+
 
 
 
