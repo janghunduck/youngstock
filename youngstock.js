@@ -363,7 +363,7 @@ async function getFscData(authkey, code, displayloc){
       }
       
       const resultString = await response.text();  // html형태로 받음, response.json();으로도 가능
-      
+      alert('in' + resultString);
       if (resultType == 'json'){
           const obj = JSON.parse(resultString);
           var items = obj.response.body.items;   // { {[]}, {[]}, ...} 
@@ -406,7 +406,7 @@ async function getServiceKey(){
     const decodedUrl = decodeURI( url );
     log += `${proxyUrl}${url}`;
     log += `${proxyUrl}${decodedUrl}`;
-    document.getElementById('console_resulta').innerText = `${log}`; 
+    //document.getElementById('console_resulta').innerText = `${log}`; 
     const response = await fetch(proxyUrl + url, {
         headers: {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
@@ -669,6 +669,7 @@ kg모빌리티 1000
 2026년 03월 06일 16시 10분 기준 장마감
 3,505 ▼ 5 , - 0.14 %
 */
+
 
 
 
