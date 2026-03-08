@@ -1,0 +1,6 @@
+html {                
+  font-size: 62.5%; /* 16px * 62.5% = 10px로 기준 설정 */
+}
+body {
+  font-size: 1.6rem; /* 10px * 1.6 = 16px 적용 */
+}
