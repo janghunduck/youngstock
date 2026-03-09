@@ -128,7 +128,7 @@ https://janghunduck.github.io/youngstock/finup_result.html
   navar finance 에서 현재가격과 등락률을 가져온다. 
   navar는 code에 접근하는 것에 limited 를 설정하고 있으며, cors 정책으로 다이렉트로 접근이 불가능하다.
   우회 프락시서버를 end 단에서 활성화 시켜줘야한다.
-  금융위원회의 데이터는 실시간이 아니므로 실시간 데이터는 다른곳에서 가져와야 한다. 
+  금융위원회의 데이터는 실시간이 아니므로 실시간 데이터는 다른곳에서 가져와야 한다. 그래서 여기 함수를 사용한다.
   (잘못하면 해킹에 해당되므로 과도하게 접속을 해서는 안됨)
   (todo) 이런 이유로 막힐경우 finup 등 대안 코딩을 추가한다.
   (todo) url 도 숨기기위해 앞단에서 받아온다. 문제는 여기서 다이렉트로 함수 접근 어렵운것 같음
@@ -188,6 +188,17 @@ async function crawlcd(code, displayloc) {
         document.getElementById(displayloc).innerText = `${result}`; 
     }
 }
+
+/*
+NAVAR의 한국금귱 데이터와 미국주식 데이터를 제공하는데 포멧이 틀리므로 미국 주식 조회시 다르다
+통합을 하자니 글들을 다 바꿔야하니 함수를 새로 생성함.
+바꿀경우 위함수에서 분기를 해햐함 crawlcd(code, dispalyloc, contry) 와 같이 argment에 contry를 추가해야함.
+이는 단지 url 이 다르기 따문에 발생하므로 추후 통합해야 함.
+*/
+async function crawlcdAmerica(code, displayloc) {
+
+}
+
 
 async function crawlcd(code, displayloc) {
     const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; //cors 우회 프록시 서버 URL
@@ -688,6 +699,7 @@ function getCurrentHtml(){
 
    document.getElementById('console_result').innerText = `${chtml}`;
 }
+
 
 
 
