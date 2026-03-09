@@ -676,6 +676,7 @@ kg모빌리티 1000
 -. 회사명 앞에 구분자를 두어여 인식하는데 애매하긴 하다 못에 정하질 못하겠음,
 -. 일단 모든 항목에서 [회사명, 액면가] 로 수정함.
 -. 회사명 인식자로른 "[" 로 임시 정하는데 추후 변경할걸 대비 한곳에서 마꿀수 있도록 하면 되나? 특수문자 고려중...
+   한글 특수문자 중 점은 키보드로 표현하지 못하는 커서의 중간에 위치한 점임.
 -. 현재페이지의 Html 전체 소스를 가져온다
 1. 전체소스 document.documentElement.outerHTML;
 2. <body> 내용만 가져오기: document.body.innerHTML;
@@ -687,6 +688,7 @@ function getCurrentHtml(){
 
    document.getElementById('console_result').innerText = `${chtml}`;
 }
+
 
 
 
