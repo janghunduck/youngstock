@@ -249,7 +249,7 @@ async function crawlcd(code, displayloc) {
 <script src="https://janghunduck.github.io/youngstock/youngstock.js"></script>
 <script>crawlcd('279570', 'console_result');</script>
 */
-function disphtml(code, displayloc){
+function crawlcdHtml(code, displayloc){
     var realstock = `
           <div id="console_result">&nbsp;</div>
           <script src="https://janghunduck.github.io/youngstock/youngstock.js"></script>
@@ -685,6 +685,7 @@ function getCurrentHtml(){
 
    document.getElementById('console_result').innerText = `${chtml}`;
 }
+
 
 
 
