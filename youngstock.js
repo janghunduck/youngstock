@@ -178,8 +178,8 @@ async function crawlcd(code, displayloc) {
 
         result = result.replaceAll('현재가','');
         result = result.replaceAll('전일대비',' ');
-        result = result.replaceAll('하락','▼');
-        result = result.replaceAll('상승','▲');
+        result = result.replaceAll('하락','▼');  // todo: blue
+        result = result.replaceAll('상승','▲');  // todo: red
         result = result.replaceAll('보합',', ');
         result = result.replaceAll('마이너스',', -');
         result = result.replaceAll('플러스',', +');
@@ -685,6 +685,7 @@ function getCurrentHtml(){
 
    document.getElementById('console_result').innerText = `${chtml}`;
 }
+
 
 
 
