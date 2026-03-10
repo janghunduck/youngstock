@@ -374,11 +374,13 @@ async function getFscData(authkey, code, displayloc){
       }
       
       const resultString = await response.text();  // html형태로 받음, response.json();으로도 가능
-      alert('in' + resultString);
+      //alert('in' + resultString);
+      container.innerHTML += `${resultString}`; 
       if (resultType == 'json'){
           const obj = JSON.parse(resultString);
           var items = obj.response.body.items;   // { {[]}, {[]}, ...} 
           var dispitem = '';
+          alert(items.length);
           for (var i=0; i < items.length; i++){  // "item":[ { "basDt":"20260226", "srtnCd":"002960", ... } ] 배열안에 하나의 object
           	  if (i == items.length-1){
   		            dispitem += items[i].basDt + '/' + items[i].clpr + '/' + items[i].vs + '/' + items[i].fltRt;
@@ -699,6 +701,7 @@ function getCurrentHtml(){
 
    document.getElementById('console_result').innerText = `${chtml}`;
 }
+
 
 
 
